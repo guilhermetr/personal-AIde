@@ -1,7 +1,7 @@
 {
   "name": "personal-aide",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",    
     "build": "ng build",

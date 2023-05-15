@@ -15,7 +15,7 @@ function createWindow () {
   mainWindow.loadURL('http://localhost:4200')
 
   //// uncomment below to open the DevTools.
-  // win.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Event when the window is closed.
   mainWindow.on('closed', function () {

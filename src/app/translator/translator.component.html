@@ -1,0 +1,18 @@
+<div class="input-area">
+    <app-auto-resizable-text-area 
+        #toTranslate
+        [(value)]="inputText" 
+        (valueChange)="onUserInput()"
+        (heightChange)="onTextAreasHeightChange(1, $event)"
+        placeholder="Enter text to translate">
+    </app-auto-resizable-text-area>
+</div>
+<div class="output-area">
+    <app-auto-resizable-text-area 
+        #translated
+        [value]="responseData"
+        (heightChange)="onTextAreasHeightChange(2, $event)"
+        placeholder="Translation"
+        [readonly]="true">
+    </app-auto-resizable-text-area>
+</div>

@@ -1,0 +1,5 @@
+.input-area textarea,
+.output-area textarea {
+  width: 100%;
+  resize: vertical;
+}

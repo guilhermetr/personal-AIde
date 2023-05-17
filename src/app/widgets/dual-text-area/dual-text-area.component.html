@@ -1,0 +1,15 @@
+<widgets-auto-resizable-text-area 
+    #left
+    [(value)]="inputText" 
+    (valueChange)="onUserInput()"
+    (heightChange)="onTextAreasHeightChange(1, $event)"
+    [placeholder]="leftPlaceholder">
+</widgets-auto-resizable-text-area>
+<widgets-auto-resizable-text-area 
+    #right
+    [value]="responseData"
+    (heightChange)="onTextAreasHeightChange(2, $event)"
+    [placeholder]="rightPlaceholder"
+    [readonly]="true">
+</widgets-auto-resizable-text-area>
+

@@ -1,17 +1,6 @@
-<div mainBorder>
-    <h3>Translator</h3>    
-    <app-auto-resizable-text-area 
-        #toTranslate
-        [(value)]="inputText" 
-        (valueChange)="onUserInput()"
-        (heightChange)="onTextAreasHeightChange(1, $event)"
-        placeholder="Enter text to translate">
-    </app-auto-resizable-text-area>
-    <app-auto-resizable-text-area 
-        #translated
-        [value]="responseData"
-        (heightChange)="onTextAreasHeightChange(2, $event)"
-        placeholder="Translation"
-        [readonly]="true">
-    </app-auto-resizable-text-area>
-</div>
+<h3>{{ title }}</h3>    
+<widgets-dual-text-area 
+    [postData]="apiService.postTranslationData"
+    leftPlaceholder="Enter text"
+    rightPlaceholder="Translation">
+</widgets-dual-text-area>

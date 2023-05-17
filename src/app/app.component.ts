@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SummarizerComponent } from './widgets/summarizer/summarizer.component';
+import { TranslatorComponent } from './widgets/translator/translator.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'personal-AIde';
+  items = [
+    { component: SummarizerComponent, inputs: { /* input properties */ } },
+    { component: TranslatorComponent, inputs: { /* input properties */ } },
+  ];
 }

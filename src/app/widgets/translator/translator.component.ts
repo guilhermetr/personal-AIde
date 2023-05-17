@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { TranslationAPI } from '../services/translation-api';
-import { Timer } from '../utils/timer';
+import { TranslationAPI } from '../../services/translation-api';
+import { Timer } from '../../utils/timer';
 import { AutoResizableTextAreaComponent } from '../auto-resizable-text-area/auto-resizable-text-area.component';
 
 @Component({

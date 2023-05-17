@@ -1,4 +1,5 @@
-<div class="input-area">
+<div mainBorder>
+    <h3>Translator</h3>    
     <app-auto-resizable-text-area 
         #toTranslate
         [(value)]="inputText" 
@@ -6,8 +7,6 @@
         (heightChange)="onTextAreasHeightChange(1, $event)"
         placeholder="Enter text to translate">
     </app-auto-resizable-text-area>
-</div>
-<div class="output-area">
     <app-auto-resizable-text-area 
         #translated
         [value]="responseData"

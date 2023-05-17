@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-auto-resizable-text-area',
+  selector: 'widgets-auto-resizable-text-area',
   templateUrl: './auto-resizable-text-area.component.html',
   styleUrls: ['./auto-resizable-text-area.component.css']
 })

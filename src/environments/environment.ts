@@ -16,4 +16,4 @@ export const environment = {
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
 
 export const HUGGING_FACE_API_TOKEN = "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";
-export const HUGGING_FACE_API_URL = 'https://api-inference.huggingface.co/models/';
+export const HUGGING_FACE_API_URL = 'https://api-inference.huggingface.co/models';

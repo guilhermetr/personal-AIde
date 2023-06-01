@@ -1,6 +1,7 @@
 <h3>{{ title }}</h3>    
 <widgets-dual-text-area 
-    [postData]="apiService.postTranslationData"
+    (inputTextChange)="makeApiRequest($event)"
+    [outputText]="apiResponseText"
     leftPlaceholder="Enter text"
     rightPlaceholder="Translation">
 </widgets-dual-text-area>

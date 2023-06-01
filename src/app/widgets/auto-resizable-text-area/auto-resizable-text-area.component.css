@@ -1,5 +1,21 @@
 textarea {
-    width: 50%; /* Each textarea takes up 50% of the container's width */
-    box-sizing: border-box; /* Include padding and border in the specified width */
-    min-height: 80px;  
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    width: 50%;
+    box-sizing: border-box;
+    min-height: 80px;
+    resize: none;
+    padding: 10px;    
+    line-height: 1.4;
+    resize: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }

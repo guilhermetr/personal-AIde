@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Timer } from 'src/app/utils/timer';
 import { AutoResizableTextAreaComponent } from '../auto-resizable-text-area/auto-resizable-text-area.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'widgets-dual-text-area',
@@ -8,8 +9,7 @@ import { AutoResizableTextAreaComponent } from '../auto-resizable-text-area/auto
   styleUrls: ['./dual-text-area.component.css']
 })
 export class DualTextAreaComponent implements OnInit {
-  inputText!: string;
-  responseData!: string;
+  inputText!: string;  
   timer!: Timer;
 
   leftTextAreaHeight: number = 0;
@@ -18,14 +18,16 @@ export class DualTextAreaComponent implements OnInit {
   @ViewChild('left') leftTextArea!: AutoResizableTextAreaComponent;
   @ViewChild('right') rightTextArea!: AutoResizableTextAreaComponent;
 
-  @Input() postData!: Function;
   @Input() leftPlaceholder: string = "";
   @Input() rightPlaceholder: string = "";
+  @Input() outputText: string = "";
+
+  @Output() inputTextChange = new EventEmitter<string>();
 
   constructor() {}
   
   ngOnInit(): void {
-    this.timer = new Timer(() => this.makeApiRequest(), 2000);
+    this.timer = new Timer(() => this.emitInputChange(), 2000);
   }
   
   // Starts the timer or restarts it in case it was already started
@@ -34,7 +36,7 @@ export class DualTextAreaComponent implements OnInit {
     if (this.inputText !== "") {
       this.timer.start(); 
     } else {
-      this.responseData = "";
+      this.outputText = "";
     }
   }  
 
@@ -52,10 +54,12 @@ export class DualTextAreaComponent implements OnInit {
     this.rightTextArea.height = largestHeight;
   }
 
-  private makeApiRequest() {    
-    const data = { input: this.inputText };
-    this.postData(data.input).subscribe((response: any) => {
-      this.responseData = response[0].translation_text;      
-    });
+  private emitInputChange() {
+    try {      
+      this.inputTextChange.emit(this.inputText);
+    } catch(e) {      
+      this.timer.clear();
+      throw e;
+    }    
   }
 }

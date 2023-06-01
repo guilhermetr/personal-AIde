@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #4285F4;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+  
+.header-logo {
+    margin-right: 20px;
+}
+
+.header-logo img {
+    height: 30px;
+}
+
+.header-search {
+    flex-grow: 1;
+    text-align: center;    
+}
+
+.header-search input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+}
+
+.header-settings {
+    cursor: pointer;
+}
+  

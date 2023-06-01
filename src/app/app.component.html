@@ -1,1 +1,7 @@
-<app-grid [items]="items"></app-grid>
+<div class="container">
+    <app-header></app-header>
+    <div style="display: flex; flex-direction: row;">
+      <app-sidebar style="flex: 0 0 auto;"></app-sidebar>
+      <app-grid [items]="items" style="flex: 1 1 auto;"></app-grid>
+    </div>    
+</div>

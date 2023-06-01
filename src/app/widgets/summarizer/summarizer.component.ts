@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HuggingFaceAPI } from 'src/app/services/translation-api';
+import { Observable } from 'rxjs';
+import { HuggingFaceAPI } from 'src/app/services/hugging-face-api';
 
 @Component({
   selector: 'widgets-summarizer',
@@ -8,12 +9,18 @@ import { HuggingFaceAPI } from 'src/app/services/translation-api';
 })
 export class SummarizerComponent implements OnInit {
   title: string = "Summarizer"  
-  apiService: HuggingFaceAPI;
+  apiResponseText: string = "";
 
-  constructor(private _apiService: HuggingFaceAPI) {
-    this.apiService = _apiService;
-  }
+  constructor(private apiService: HuggingFaceAPI) { }
 
   ngOnInit(): void { }
+
+  makeApiRequest(inputText: string) {
+    const data = { input: inputText };      
+    this.apiService.postSummarizerData(data.input).subscribe((response: any) => {
+      console.log(response[0]);
+      this.apiResponseText = response[0].summary_text;      
+    });    
+  }
 
 }

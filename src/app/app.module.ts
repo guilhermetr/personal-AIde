@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -9,22 +8,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { WidgetsModule } from './widgets/widgets.module';
 import { GridComponent } from './grid/grid.component';
 import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule, Routes } from '@angular/router';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BodyComponent } from './body/body.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'widgets', component: DashboardComponent },
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     GridComponent,
-    HeaderComponent,
-    SidebarComponent,     
+    HeaderComponent,    
+    SidenavComponent,
+    DashboardComponent,
+    BodyComponent,
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     FormsModule,
     HttpClientModule,
     WidgetsModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatToolbarModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

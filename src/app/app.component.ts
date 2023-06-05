@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SummarizerComponent } from './widgets/summarizer/summarizer.component';
 import { TranslatorComponent } from './widgets/translator/translator.component';
+import { SideNavToggle } from './utils/sidenav-toggle';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,11 @@ export class AppComponent {
     { component: SummarizerComponent, inputs: { /* input properties */ } },
     { component: TranslatorComponent, inputs: { /* input properties */ } },
   ];
+  isSidenavCollapsed = false;
+  screenWidth = window.innerWidth;
+
+  onToggleSidenav(data: SideNavToggle): void {
+    this.screenWidth = data.screenWidth;
+    this.isSidenavCollapsed = data.collapsed;
+  }
 }

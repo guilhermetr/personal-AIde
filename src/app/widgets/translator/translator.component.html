@@ -1,7 +1,8 @@
-<h3>{{ title }}</h3>    
-<widgets-dual-text-area 
-    (inputTextChange)="makeApiRequest($event)"
-    [outputText]="apiResponseText"
-    leftPlaceholder="Enter text"
-    rightPlaceholder="Translation">
-</widgets-dual-text-area>
+<widgets-simple-card [headerText]="title">
+    <widgets-dual-text-area         
+        [outputText]="apiResponseText"
+        leftPlaceholder="Enter text"
+        rightPlaceholder="Translation">
+    </widgets-dual-text-area>
+</widgets-simple-card>
+    

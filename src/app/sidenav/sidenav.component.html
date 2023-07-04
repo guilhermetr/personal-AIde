@@ -3,20 +3,35 @@
         <button class="logo" (click)="toggleCollapse()">AI</button>
         <div class="logo-text" @fadeInOut *ngIf="!collapsed">AIde</div>
         <button class="btn-close" *ngIf="!collapsed" (click)="closeSidenav()">
-            <i class="fa-solid fa-times close-icon"></i>
+            <i class="fa-solid fa-times"></i>
         </button>
     </div>
     <ul class="sidenav-nav">
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a class="sidenav-nav-link" 
-               [routerLink]="data.routerLink" 
-               routerLinkActive="active"
-               [routerLinkActiveOptions]="{exact: true}">
+        <li class="sidenav-nav-item" *ngFor="let data of navData" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="sidenav-nav-link"
+                [class.submenu-toggle]="data.children" 
+                [routerLink]="data.routerLink"
+                (click)="data.children ? toggleSubmenu(data.label) : null">
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
                 <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">
                     {{ data.label }}
                 </span>
-            </a> 
+                <i *ngIf="data.children && !collapsed" @fadeInOut 
+                    class="sidenav-link-caret fa-solid"
+                    [class.fa-caret-down]="submenusState[data.label]"
+                    [class.fa-caret-up]="!submenusState[data.label]"></i>
+            </a>
+            <ul *ngIf="data.children" class="sidenav-nav-submenu">
+                <li *ngFor="let childData of data.children">
+                    <a class="sidenav-nav-link"                        
+                        [routerLink]="childData.routerLink">
+                        <i class="sidenav-link-icon" [class]="childData.icon"></i>
+                        <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">
+                            {{ childData.label }}
+                        </span>
+                    </a>
+                </li>
+            </ul> 
         </li>
     </ul>
 </div>

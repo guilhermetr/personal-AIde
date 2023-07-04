@@ -13,11 +13,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BodyComponent } from './body/body.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'widgets', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },  
+  { path: 'categories/:categoryName', component: CategoriesComponent },
 ]
 
 @NgModule({
@@ -28,6 +29,7 @@ const routes: Routes = [
     SidenavComponent,
     DashboardComponent,
     BodyComponent,
+    CategoriesComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -6,7 +6,7 @@
     top: 0;
     width: 16rem;
     height: 100vh;
-    box-shadow: 0.063rem 0 1.25rem 0 #8690a8;
+    box-shadow: 0.063rem 0 1.25rem 0 #8690a8;    
 
     .logo-container {
         display: flex;
@@ -62,21 +62,20 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: calc(100% - 3.65rem);
     cursor: pointer;
 
     .sidenav-nav-item {
         width: 100%;
-        margin-bottom: 0.625rem;
+        margin-bottom: 0.625rem;        
+        border-radius: 0.625rem;        
 
         .sidenav-nav-link {
             display: flex;
-            align-items: center;
+            align-items: center;            
             height: 3rem;
             color: #f3f3f3;
             text-decoration: none;
-            border-radius: 0.625rem;
+            
             transition: all .3s ease;
 
             .sidenav-link-icon {
@@ -88,24 +87,43 @@
             }
 
             .sidenav-link-text {
-                margin-left: 1.5rem;
+                margin-left: 0.2rem;
             }
-        }                        
-    }
 
-    .sidenav-nav-item:hover {
-        .sidenav-nav-link {
-            background-color: #fff;
-            color: #000;
+            .sidenav-link-caret {
+                font-size: 22px;
+                margin-left: auto;
+                margin-right: 0.75rem;
+            }
         }
     }
-}
 
-.active {
-    background-color: #fff;
+    .sidenav-nav-submenu {
+        list-style: none;
+        display: none;
+    }
 
-    .sidenav-link-icon,
-    .sidenav-link-text {
-        color:#000;
+    .sidenav-nav-submenu.active {
+        display: block;
+    }        
+
+    .sidenav-nav-item:hover {
+        background-color: #fff;
+
+        .sidenav-link-icon,
+        .sidenav-link-text,
+        .sidenav-link-caret {
+            color:#000;
+        }
+    }
+
+    .sidenav-nav-item.active {
+        background-color: #fff;
+    
+        .sidenav-link-icon,
+        .sidenav-link-text,
+        .sidenav-link-caret {
+            color:#000;
+        }
     }
 }

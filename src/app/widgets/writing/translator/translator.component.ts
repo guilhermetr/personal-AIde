@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HuggingFaceAPI } from '../../services/hugging-face-api';
+import { HuggingFaceAPI } from '../../../services/hugging-face-api';
 import { Observable } from 'rxjs';
 
 @Component({

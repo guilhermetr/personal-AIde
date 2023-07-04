@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AutoResizableTextAreaComponent } from './auto-resizable-text-area/auto-resizable-text-area.component';
-import { TranslatorComponent } from './translator/translator.component';
+import { AutoResizableTextAreaComponent } from './utils/auto-resizable-text-area/auto-resizable-text-area.component';
+import { TranslatorComponent } from './writing/translator/translator.component';
 import { FormsModule } from '@angular/forms';
-import { SummarizerComponent } from './summarizer/summarizer.component';
-import { DualTextAreaComponent } from './dual-text-area/dual-text-area.component';
-import { SimpleCardComponent } from './simple-card/simple-card.component';
-import { FormalizerComponent } from './formalizer/formalizer.component';
+import { SummarizerComponent } from './writing/summarizer/summarizer.component';
+import { DualTextAreaComponent } from './utils/dual-text-area/dual-text-area.component';
+import { SimpleCardComponent } from './utils/simple-card/simple-card.component';
+import { FormalizerComponent } from './writing/formalizer/formalizer.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +21,6 @@ import { FormalizerComponent } from './formalizer/formalizer.component';
     CommonModule,
     FormsModule,
   ],
-  exports: [
-    TranslatorComponent,
-    SummarizerComponent,
-  ]
+  exports: []
 })
 export class WidgetsModule { }

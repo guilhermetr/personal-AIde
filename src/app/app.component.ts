@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SummarizerComponent } from './widgets/summarizer/summarizer.component';
-import { TranslatorComponent } from './widgets/translator/translator.component';
+import { SummarizerComponent } from './widgets/writing/summarizer/summarizer.component';
+import { TranslatorComponent } from './widgets/writing/translator/translator.component';
 import { SideNavToggle } from './utils/sidenav-toggle';
 
 @Component({

@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'widgets-simple-card',
   templateUrl: './simple-card.component.html',
-  styleUrls: ['./simple-card.component.css']
+  styleUrls: ['./simple-card.component.scss']
 })
 export class SimpleCardComponent implements OnInit {
   @Input() headerText: string = "";

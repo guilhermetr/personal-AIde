@@ -1,11 +1,12 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { SideNavToggle } from '../utils/sidenav-toggle';
 import { navbarData } from './nav-data';
+
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css'],
+  styleUrls: ['./sidenav.component.scss'],
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
@@ -21,6 +22,16 @@ import { navbarData } from './nav-data';
         )
       ])
     ]),
+    trigger('slideAndRotate', [
+      state('false', style({
+        transform: 'translateX(0) rotate(0)'
+      })),
+      state('true', style({
+        transform: 'translateX(-50%) rotate(180deg)'
+      })),
+      transition('false => true', animate('300ms ease-in')),
+      transition('true => false', animate('300ms ease-out'))
+    ])
   ]
 })
 export class SidenavComponent implements OnInit {
@@ -39,7 +50,7 @@ export class SidenavComponent implements OnInit {
       if (data.children) {
         this.submenusState[data.label] = true;
       }
-    })
+    });    
   }
 
   ngAfterViewInit() {
@@ -64,11 +75,6 @@ export class SidenavComponent implements OnInit {
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
-    this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth})
-  }
-
-  closeSidenav(): void {
-    this.collapsed = true;
     this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth})
   }
 

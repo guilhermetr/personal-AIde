@@ -9,11 +9,13 @@ import { WidgetsModule } from './widgets/widgets.module';
 import { GridComponent } from './grid/grid.component';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BodyComponent } from './body/body.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { ThemeToggleComponent } from './theme/theme-toggle/theme-toggle.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -30,6 +32,7 @@ const routes: Routes = [
     DashboardComponent,
     BodyComponent,
     CategoriesComponent,
+    ThemeToggleComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -38,7 +41,8 @@ const routes: Routes = [
     HttpClientModule,
     WidgetsModule,
     BrowserAnimationsModule,
-    MatToolbarModule, 
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

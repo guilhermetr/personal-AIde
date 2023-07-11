@@ -5,7 +5,7 @@ import { HuggingFaceAPI } from 'src/app/services/hugging-face-api';
 @Component({
   selector: 'widgets-summarizer',
   templateUrl: './summarizer.component.html',
-  styleUrls: ['./summarizer.component.css']
+  styleUrls: ['./summarizer.component.scss']
 })
 export class SummarizerComponent implements OnInit {
   title: string = "Summarizer"  

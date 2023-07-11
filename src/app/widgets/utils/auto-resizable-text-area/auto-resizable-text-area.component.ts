@@ -3,7 +3,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, 
 @Component({
   selector: 'widgets-auto-resizable-text-area',
   templateUrl: './auto-resizable-text-area.component.html',
-  styleUrls: ['./auto-resizable-text-area.component.css']
+  styleUrls: ['./auto-resizable-text-area.component.scss']
 })
 export class AutoResizableTextAreaComponent implements OnInit {
   @Input() placeholder: string = "";

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'widgets-translator',
   templateUrl: './translator.component.html',
-  styleUrls: ['./translator.component.css']
+  styleUrls: ['./translator.component.scss']
 })
 export class TranslatorComponent implements OnInit {
   title: string = "Translator";

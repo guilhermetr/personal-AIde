@@ -1,5 +1,4 @@
-.sidenav {
-    background: #263238;
+.sidenav {    
     transition: all .5s ease;
     position: fixed;
     z-index: 1;
@@ -33,22 +32,7 @@
             font-size: 24px;
             font-weight: 700;
             color: #fff;
-        }
-
-        .btn-close {
-            margin-left: auto;
-            cursor: pointer;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            background-color: transparent;
-            border: none;
-            
-            .fa-times {
-                color: #fff;
-                font-size: 24px;
-            }
-        }
+        }        
     }
 }
 
@@ -125,5 +109,40 @@
         .sidenav-link-caret {
             color:#000;
         }
+    }
+}
+
+.sidenav-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn-collapse {
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 10px;
+        
+        .fa-arrow-left {
+            color: #fff;
+            font-size: 18px;
+        }
+    }
+    
+    .btn-theme {
+        cursor: pointer;        
+        height: 2rem;
+        background-color: transparent;
+        border: none;    
+        margin: 10px;
     }
 }

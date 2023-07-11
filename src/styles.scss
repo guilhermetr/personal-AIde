@@ -11,15 +11,17 @@
 body {
     position: relative;
     font-family: 'Roboto', sans-serif;
-    background: #f4f7fa;
+    // background: #f4f7fa;
 }
 
-h1 { 
-    margin: 0;    
+h1 {
+    margin: 0;
 }
 
-h3 {    
+h3 {
     margin: 0 0 10px 0;    
     font-weight: 500;
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

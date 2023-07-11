@@ -4,7 +4,7 @@ import { HuggingFaceAPI } from 'src/app/services/hugging-face-api';
 @Component({
   selector: 'app-formalizer',
   templateUrl: './formalizer.component.html',
-  styleUrls: ['./formalizer.component.css']
+  styleUrls: ['./formalizer.component.scss']
 })
 export class FormalizerComponent implements OnInit {
   title: string = "Formalizer";

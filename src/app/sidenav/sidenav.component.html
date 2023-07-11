@@ -1,10 +1,7 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''" color="primary" >
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()">AI</button>
-        <div class="logo-text" @fadeInOut *ngIf="!collapsed">AIde</div>
-        <button class="btn-close" *ngIf="!collapsed" (click)="closeSidenav()">
-            <i class="fa-solid fa-times"></i>
-        </button>
+        <div class="logo-text" @fadeInOut *ngIf="!collapsed">AIde</div>        
     </div>
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -34,4 +31,15 @@
             </ul> 
         </li>
     </ul>
+    <hr style="position:absolute; bottom: 55px; width: 100%;">
+    <div class="sidenav-bottom">        
+        <app-theme-toggle *ngIf="!collapsed" class="btn-theme" @fadeInOut>            
+        </app-theme-toggle>
+        
+        <button class="btn-collapse"
+            (click)="toggleCollapse()"
+            [@slideAndRotate]="collapsed">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>        
+    </div>
 </div>

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'widgets-dual-text-area',
   templateUrl: './dual-text-area.component.html',
-  styleUrls: ['./dual-text-area.component.css']
+  styleUrls: ['./dual-text-area.component.scss']
 })
 export class DualTextAreaComponent implements OnInit {
   inputText!: string;  

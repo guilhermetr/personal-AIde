@@ -19,8 +19,10 @@ import { ThemeToggleComponent } from './theme/theme-toggle/theme-toggle.componen
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },  
-  { path: 'categories/:categoryName', component: CategoriesComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'categories', children: [
+    { path: ':categoryName', component: CategoriesComponent }
+  ]},  
 ]
 
 @NgModule({

@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import '~@angular/cdk/overlay-prebuilt.css';
@@ -16,6 +18,7 @@ body {
 
 h1 {
     margin: 0;
+    color: var(--text-color)
 }
 
 h3 {
@@ -24,4 +27,33 @@ h3 {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background: var(--bkg-color);
+    transition: all .5s ease;
+}
+
+body {
+    --text-color: #222;
+    --bkg-color: #fff;
+    --btn-color: rgb(94,94,94);
+    --btn-hover-color: rgb(31,31,31);
+    --btn-active-color: rgb(31,31,31);
+    --sdnv-bkg-color: rgb(248,248,248);
+    --sdnv-item-active-color: rgb(228,230,241);
+    --sdnv-item-hover-color: rgb(242,242,242);
+    --sdnv-box-shadow: #b6bdcd;
+}
+
+body.dark-theme {
+    --text-color: #eee;
+    --bkg-color: rgb(31,31,31);
+    --btn-color: rgb(140,140,140);
+    --btn-hover-color: rgb(215,215,215);
+    --btn-active-color: rgb(215,215,215);
+    --sdnv-bkg-color: rgb(24,24,24);
+    --sdnv-item-active-color: rgb(55,55,61);
+    --sdnv-item-hover-color: rgb(42,45,46);
+    --sdnv-box-shadow: #000000;
+}

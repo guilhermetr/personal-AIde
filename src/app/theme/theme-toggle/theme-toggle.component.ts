@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { ThemeService } from '../theme.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-theme-toggle',
@@ -7,20 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThemeToggleComponent implements OnInit {
 
-  storageKey = 'theme-preference';
-  theme = {
-    value: this.getColorPreference(),
-  };
-
-  constructor() { }
+  constructor(public themeService: ThemeService, @Inject(DOCUMENT) private document: Document,
+  private renderer: Renderer2) { }
 
   ngOnInit(): void {
     // set early so no page flashes / CSS is made aware
-    this.reflectPreference();
+    this.themeService.reflectPreference();
 
     window.onload = () => {
       // set on load so screen readers can see latest value on the button
-      this.reflectPreference();
+      this.themeService.reflectPreference();
     
       // now this script can find and listen for clicks on the control
       document
@@ -32,42 +30,19 @@ export class ThemeToggleComponent implements OnInit {
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', ({matches:isDark}) => {
-        this.theme.value = isDark ? 'dark' : 'light';
-        this.setPreference();
+        this.themeService.currentTheme = isDark ? 'dark' : 'light';
+        this.themeService.setPreference();
       })
   }
 
   onClick() {
     // flip current value
-    this.theme.value = this.theme.value === 'light'
+    this.themeService.currentTheme = this.themeService.currentTheme === 'light'
       ? 'dark'
       : 'light';
-  
-    this.setPreference();
-  }
+    
+    this.renderer.setAttribute(this.document.body, 'class', `${this.themeService.currentTheme}-theme`);
 
-  setPreference() {
-    localStorage.setItem(this.storageKey, this.theme.value!);
-    this.reflectPreference();
+    this.themeService.setPreference();
   }
-
-  reflectPreference() {
-    document.firstElementChild!
-      .setAttribute('data-theme', this.theme.value!);
-  
-    document
-      .querySelector('#theme-toggle')
-      ?.setAttribute('aria-label', this.theme.value!);
-  }
-
-  getColorPreference() {
-    var colorPreference = localStorage.getItem(this.storageKey);
-    if (colorPreference)
-      return colorPreference;
-    else
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-  }
-
 }

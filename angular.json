@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/app/theme/dark.scss",
+              "src/app/theme/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -95,7 +95,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/app/theme/dark.scss",
+              "src/app/theme/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, Inject, Renderer2 } from '@angular/core';
 import { SummarizerComponent } from './widgets/writing/summarizer/summarizer.component';
 import { TranslatorComponent } from './widgets/writing/translator/translator.component';
 import { SideNavToggle } from './utils/sidenav-toggle';
 import { ThemeService } from './theme/theme.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -23,4 +24,5 @@ export class AppComponent {
     this.screenWidth = data.screenWidth;
     this.isSidenavCollapsed = data.collapsed;
   }
+  
 }

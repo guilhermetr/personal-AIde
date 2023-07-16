@@ -1,5 +1,5 @@
-<button [attr.data-theme]="theme.value" [ngClass]="{ 'dark-theme': theme.value === 'dark' }" class="theme-toggle" id="theme-toggle" title="Toggle Theme" aria-label="auto" aria-live="polite">
-    <svg [ngClass]="{ 'sun-and-moon-dark-theme': theme.value === 'dark' }" class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+<button [attr.data-theme]="themeService.currentTheme" [ngClass]="{ 'dark-theme': themeService.currentTheme === 'dark' }" class="theme-toggle" id="theme-toggle" title="Toggle Theme" aria-label="auto" aria-live="polite">
+    <svg [ngClass]="{ 'sun-and-moon-dark-theme': themeService.currentTheme === 'dark' }" class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
       <mask class="moon" id="moon-mask">
         <rect x="0" y="0" width="100%" height="100%" fill="white" />
         <circle cx="24" cy="10" r="6" fill="black" />

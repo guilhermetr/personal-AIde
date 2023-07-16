@@ -1,19 +1,35 @@
 import { Injectable } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private isDarkTheme = true;
+  public currentTheme = this.getColorPreference();
+  private storageKey = 'theme-preference';
 
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-    // Apply theme styles here
-    // e.g., add or remove CSS classes, update theme variables, etc.
+  constructor() {}
+
+  getColorPreference() {
+    var colorPreference = localStorage.getItem(this.storageKey);
+    if (colorPreference)
+      return colorPreference;
+    else
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
   }
 
-  isDarkThemeEnabled() {
-    return this.isDarkTheme;
+  setPreference() {
+    localStorage.setItem(this.storageKey, this.currentTheme);
+    this.reflectPreference();
+  }
+
+  reflectPreference() {
+    document.firstElementChild!
+      .setAttribute('data-theme', this.currentTheme);
+  
+    document
+      .querySelector('#theme-toggle')
+      ?.setAttribute('aria-label', this.currentTheme);
   }
 }

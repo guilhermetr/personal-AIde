@@ -1,16 +1,34 @@
 .card {
     display: flex;
     flex-direction: column;
-    border-radius: .5rem;
-    background-color: #fff;
+    border-radius: .5rem;    
     margin: 1.25rem 0 1.25rem 0;
-    box-shadow: 0 .25rem .5rem #e6edef;
-    color: #495057;
+    box-shadow: 0 0 .75rem var(--box-shadow);    
+    background-color: var(--card-primary);    
 
     .card-header {
-        padding: 0.6rem 1.2rem;
-        border-bottom: 1px solid #edf1f7;
+        padding: .8rem;
+        border-bottom: 1px solid var(--card-secondary);
         font-size: 1rem;
         font-weight: 600;
+        color: var(--text-primary);
+        display: flex;
+        justify-content: space-between;
     }
+
+    &.expanded {
+        flex: 1; /* This will make the card expand to fill the available space */
+    }
+
+    .btn-expand {
+        cursor: pointer;        
+        background-color: transparent;
+        border: none;
+        color: var(--btn-primary);        
+    }
+
+    .btn-expand:hover {
+        color: var(--btn-hover);
+    }
+
 }

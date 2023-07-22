@@ -3,6 +3,7 @@ import { SummarizerComponent } from '../widgets/writing/summarizer/summarizer.co
 import { TranslatorComponent } from '../widgets/writing/translator/translator.component';
 import { FormalizerComponent } from '../widgets/writing/formalizer/formalizer.component';
 import { ActivatedRoute } from '@angular/router';
+import { CodeCleanerComponent } from '../widgets/programming/code-cleaner/code-cleaner.component';
 
 @Component({
   selector: 'app-categories',
@@ -14,7 +15,7 @@ export class CategoriesComponent implements OnInit {
   selectedCategory: string = "";
   categories: { [key: string]: any[]}  = {
     programming: [
-
+      { component: CodeCleanerComponent }
     ],
     writing: [
       { component: SummarizerComponent, inputs: { /* input properties */ } },

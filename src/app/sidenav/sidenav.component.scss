@@ -1,12 +1,11 @@
 .sidenav {
-    background-color: var(--sdnv-bkg-color);   
-    transition: all .5s ease;
+    background-color: var(--sdnv-primary);       
     position: fixed;
     z-index: 1;
     top: 0;
     width: 16rem;
     height: 100vh;
-    box-shadow: 0.063rem 0 1.25rem 0 var(--sdnv-box-shadow);    
+    box-shadow: 0.063rem 0 1.25rem 0 var(--box-shadow);    
 
     .logo-container {
         display: flex;
@@ -32,7 +31,7 @@
             margin-left: 1.5rem;
             font-size: 24px;
             font-weight: 700;
-            color: var(--text-color);
+            color: var(--text-primary);
         }        
     }
 }
@@ -53,6 +52,7 @@
         width: 100%;
         margin-bottom: 0.25rem;        
         border-radius: 0.625rem;
+        transition: none;
 
         .sidenav-nav-link {
             display: flex;
@@ -60,7 +60,7 @@
             height: 3rem;
             text-decoration: none;            
             transition: all .3s ease;
-            color: var(--btn-color);
+            color: var(--btn-primary);
 
             .sidenav-link-icon {
                 font-size: 22px;
@@ -72,7 +72,7 @@
 
             .sidenav-link-text {
                 margin-left: 0.2rem;
-                color: var(--text-color)
+                color: var(--text-primary)
             }
 
             .sidenav-link-caret {
@@ -94,24 +94,24 @@
     }        
 
     .sidenav-nav-item:hover {
-        background-color: var(--sdnv-item-hover-color);
+        background-color: var(--sdnv-item-hover);
 
         .sidenav-link-icon,        
         .sidenav-link-caret {
-            color: var(--btn-hover-color);
+            color: var(--btn-hover);
         }
     }
 
     .sidenav-nav-item.active {
-        background-color: var(--sdnv-item-active-color);
+        background-color: var(--sdnv-item-active);
 
         .sidenav-link-text {
-            color: var(--text-color)
+            color: var(--text-primary)
         }
 
         .sidenav-link-icon,        
         .sidenav-link-caret {
-            color: var(--btn-active-color);
+            color: var(--btn-active);
         }
     }
 }
@@ -137,12 +137,12 @@
         margin: 10px;
         
         .fa-arrow-left {
-            color: var(--btn-color);
+            color: var(--btn-primary);
             font-size: 18px;
         }
 
         .fa-arrow-left:hover {
-            color: var(--btn-hover-color);            
+            color: var(--btn-hover);            
         }
     }
     

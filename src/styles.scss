@@ -7,7 +7,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 
 h1 {
     margin: 0;
-    color: var(--text-color)
+    color: var(--text-primary)
 }
 
 h3 {
@@ -30,30 +30,62 @@ html, body { height: 100%; }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background: var(--bkg-color);
+    background: var(--background);
     transition: all .5s ease;
 }
 
+body * {
+    transition: all .5s ease;
+
+    button, i {
+        transition: none;
+    }
+}
+
 body {
-    --text-color: #222;
-    --bkg-color: #fff;
-    --btn-color: rgb(94,94,94);
-    --btn-hover-color: rgb(31,31,31);
-    --btn-active-color: rgb(31,31,31);
-    --sdnv-bkg-color: rgb(248,248,248);
-    --sdnv-item-active-color: rgb(228,230,241);
-    --sdnv-item-hover-color: rgb(242,242,242);
-    --sdnv-box-shadow: #b6bdcd;
+    /* Text */
+    --text-primary: rgb(34,34,34);
+    --text-secondary: rgb(60,60,60);
+    
+    /* Sidenav */
+    --sdnv-primary: rgb(239, 239, 239);
+    --sdnv-item-active: rgb(228,230,241);
+    --sdnv-item-hover: rgb(242,242,242);
+
+    /* Button */
+    --btn-primary: rgb(94,94,94);
+    --btn-active: rgb(31,31,31);
+    --btn-hover: rgb(31,31,31);    
+
+    /* Card */
+    --card-primary: rgb(239, 239, 239);
+    --card-secondary: rgb(229,229,229);
+
+    /* General */
+    --background: #fff;    
+    --box-shadow: #b6bdcd;
 }
 
 body.dark-theme {
-    --text-color: #eee;
-    --bkg-color: rgb(31,31,31);
-    --btn-color: rgb(140,140,140);
-    --btn-hover-color: rgb(215,215,215);
-    --btn-active-color: rgb(215,215,215);
-    --sdnv-bkg-color: rgb(24,24,24);
-    --sdnv-item-active-color: rgb(55,55,61);
-    --sdnv-item-hover-color: rgb(42,45,46);
-    --sdnv-box-shadow: #000000;
+    /* Text */
+    --text-primary: rgb(228,230,235);
+    --text-secondary: rgb(176,179,184);
+    
+    /* Sidenav */
+    --sdnv-primary: rgb(24,24,24);
+    --sdnv-item-active: rgb(55,55,61);
+    --sdnv-item-hover: rgb(42,45,46);
+
+    /* Button */
+    --btn-primary: rgb(100, 100, 100);
+    --btn-active: rgb(215,215,215);
+    --btn-hover: rgb(215,215,215);    
+
+    /* Card */
+    --card-primary: rgb(45,45,45);
+    --card-secondary: rgb(55,55,55);
+
+    /* General */
+    --background: rgb(31,31,31);    
+    --box-shadow: #0b0b0b;
 }

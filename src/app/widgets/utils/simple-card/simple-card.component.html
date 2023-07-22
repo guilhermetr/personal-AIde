@@ -1,6 +1,9 @@
-<div class="card">
+<div class="card" [ngClass]="{ 'expanded': isExpanded }">
     <div class="card-header">
         {{ headerText }}
+        <button (click)="toggleExpansion()" class="btn-expand">
+            <i class="fas fa-solid fa-up-right-and-down-left-from-center"></i>
+        </button>        
     </div>
     <ng-content></ng-content>    
 </div>

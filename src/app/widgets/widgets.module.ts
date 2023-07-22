@@ -7,6 +7,8 @@ import { SummarizerComponent } from './writing/summarizer/summarizer.component';
 import { DualTextAreaComponent } from './utils/dual-text-area/dual-text-area.component';
 import { SimpleCardComponent } from './utils/simple-card/simple-card.component';
 import { FormalizerComponent } from './writing/formalizer/formalizer.component';
+import { TextInputAreaComponent } from './utils/text-input-area/text-input-area.component';
+import { CodeCleanerComponent } from './programming/code-cleaner/code-cleaner.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FormalizerComponent } from './writing/formalizer/formalizer.component';
     AutoResizableTextAreaComponent,
     DualTextAreaComponent,
     SimpleCardComponent,
-    FormalizerComponent,    
+    FormalizerComponent,
+    TextInputAreaComponent,
+    CodeCleanerComponent,    
   ],
   imports: [
     CommonModule,

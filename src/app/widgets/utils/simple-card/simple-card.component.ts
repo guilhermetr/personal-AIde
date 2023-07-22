@@ -9,9 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SimpleCardComponent implements OnInit {
   @Input() headerText: string = "";
 
+  isExpanded: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  toggleExpansion() {
+    this.isExpanded = !this.isExpanded;
+  }
 }

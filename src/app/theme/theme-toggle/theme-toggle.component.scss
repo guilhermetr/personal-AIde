@@ -2,8 +2,8 @@
 
 .theme-toggle {
   --size: 1.8rem;
-  --icon-fill: var(--btn-color);
-  --icon-fill-hover: var(--btn-hover-color);
+  --icon-fill: var(--btn-primary);
+  --icon-fill-hover: var(--btn-hover);
 
   background: none;
   border: none;
@@ -32,6 +32,6 @@
 }
 
 .dark-theme {
-  --icon-fill: var(--btn-color);
-  --icon-fill-hover: var(--btn-hover-color);
+  --icon-fill: var(--btn-primary);
+  --icon-fill-hover: var(--btn-hover);
 }

@@ -9,7 +9,7 @@ import { WidgetsModule } from './widgets/widgets.module';
 import { GridComponent } from './grid/grid.component';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule, Routes } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -44,7 +44,7 @@ const routes: Routes = [
     WidgetsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

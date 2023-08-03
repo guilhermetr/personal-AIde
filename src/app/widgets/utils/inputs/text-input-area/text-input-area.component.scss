@@ -2,10 +2,9 @@ textarea {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 300;
-    width: 50%;
+    width: 100%;
+    height: 80%;
     box-sizing: border-box;
-    height: 250px;
-    resize: none;    
     line-height: 1.4;
     resize: none;
     border: none;
@@ -13,29 +12,23 @@ textarea {
     vertical-align: top;
     border-radius: 0 0 .5rem .5rem;
     caret-color: transparent;    
-    background-color: var(--card-primary);    
+    background-color: var(--card-primary);
 }
 
 textarea:focus {
     outline: none;    
 }
 
-/* custom-text-area.component.css */
-.custom-textarea-container {
+.text-input-area-container {
     position: relative;
-}
-  
-.custom-textarea {
-    width: 100%;
-    box-sizing: border-box;
-    resize: none;
+    height: 96%;
 }
 
 .input-wrapper {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
   
 .input-inside-textarea {

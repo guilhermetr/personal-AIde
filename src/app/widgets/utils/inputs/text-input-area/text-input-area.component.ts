@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'widgets-text-input-area',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextInputAreaComponent implements OnInit {
   
+  @Input() title: string = "Title";
   inputValue: string = '';
 
   constructor() { }

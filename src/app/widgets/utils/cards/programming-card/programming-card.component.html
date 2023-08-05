@@ -1,6 +1,4 @@
-<div class="card-header">
-    {{ headerText }}
-    <button (click)="toggleExpand()" class="btn-expand">
-        <i class="fas fa-solid fa-up-right-and-down-left-from-center"></i>
-    </button>        
+<div class="card" [ngClass]="{ 'expanded-card': isExpanded }">
+    <widgets-card-header [headerText]="headerText" [isExpanded]="isExpanded" (expansionToggled)="toggleExpansion()"></widgets-card-header>
+    <widgets-text-input-area></widgets-text-input-area>
 </div>

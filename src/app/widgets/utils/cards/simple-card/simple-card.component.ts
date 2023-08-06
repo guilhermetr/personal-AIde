@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit, Optional, TemplateRef, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 
 // A simple container for widgets with a header and an input area
 @Component({

@@ -1,20 +1,12 @@
-.card-header {
-    padding: .8rem;
-    border-bottom: 1px solid var(--card-secondary);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    display: flex;
-    justify-content: space-between;
+.card {
+    height: 240px;
+    border-radius: .5rem;    
+    margin: 1.25rem 0 1.25rem 0;
+    box-shadow: 0 0 .75rem var(--box-shadow);    
+    background-color: var(--card-primary);    
 }
 
-.btn-expand {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    color: var(--btn-primary);
-}
-
-.btn-expand:hover {
-    color: var(--btn-hover);
+.expanded-card {
+    height: 90vh;
+    width: 75vw;
 }

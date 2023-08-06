@@ -17,7 +17,8 @@ export class AppComponent {
   isSidenavCollapsed = false;
   screenWidth = window.innerWidth;
 
-  constructor(public themeService: ThemeService) {}
+  constructor(public themeService: ThemeService) {
+  }
 
   onToggleSidenav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;

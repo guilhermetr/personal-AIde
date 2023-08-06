@@ -6,6 +6,7 @@
     color: var(--text-primary);
     display: flex;
     justify-content: space-between;
+    caret-color: transparent;
 }
 
 .btn-expand {
@@ -13,6 +14,7 @@
     background-color: transparent;
     border: none;
     color: var(--btn-primary);
+    outline: none;
 }
 
 .btn-expand:hover {

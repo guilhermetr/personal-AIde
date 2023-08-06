@@ -1,9 +1,8 @@
 import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
-import { CodeModel } from '@ngstack/code-editor';
 
 @Component({
-  selector: 'app-programming-card',
+  selector: 'widgets-programming-card',
   templateUrl: './programming-card.component.html',
   styleUrls: ['./programming-card.component.scss']
 })

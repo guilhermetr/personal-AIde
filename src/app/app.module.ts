@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BodyComponent } from './body/body.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ThemeToggleComponent } from './theme/theme-toggle/theme-toggle.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -44,7 +45,8 @@ const routes: Routes = [
     WidgetsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MonacoEditorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

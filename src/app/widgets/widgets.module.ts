@@ -11,8 +11,8 @@ import { TextInputAreaComponent } from './utils/input/text-input-area/text-input
 import { CardHeaderComponent } from './utils/cards/card-header/card-header.component';
 import { ProgrammingCardComponent } from './utils/cards/programming-card/programming-card.component';
 import { CodeCleanerComponent } from './programming/code-cleaner/code-cleaner.component';
-import { CodeEditorModule } from '@ngstack/code-editor';
-import { CodeInputAreaComponent } from './utils/input/code-input-area/code-input-area.component';
+import { CodeEditorComponent } from './utils/input/code-editor/code-editor.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 @NgModule({
   declarations: [
@@ -26,12 +26,12 @@ import { CodeInputAreaComponent } from './utils/input/code-input-area/code-input
     CardHeaderComponent,
     ProgrammingCardComponent,
     CodeCleanerComponent,
-    CodeInputAreaComponent,
+    CodeEditorComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    CodeEditorModule.forRoot(),
+    MonacoEditorModule
   ],
   exports: []
 })

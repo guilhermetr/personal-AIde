@@ -1,4 +1,6 @@
-<div class="card" [ngClass]="{ 'expanded-card': isExpanded }">
+<div class="card">
     <widgets-card-header [headerText]="headerText" [isExpanded]="isExpanded" (expansionToggled)="toggleExpansion()"></widgets-card-header>
-    <widgets-text-input-area></widgets-text-input-area>
+    <div class="card-body" [ngClass]="{ 'expanded-card': isExpanded }">        
+        <widgets-text-input-area></widgets-text-input-area>
+    </div>    
 </div>

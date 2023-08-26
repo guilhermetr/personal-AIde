@@ -1,8 +1,13 @@
 <div class="card-header">
     {{ headerText }}
-    <button (click)="toggleExpansion()" class="btn-expand">
-        <i class="fas fa-solid" 
-            [class.fa-up-right-and-down-left-from-center]="!isExpanded"
-            [class.fa-down-left-and-up-right-to-center]="isExpanded"></i>
-    </button>        
+    <div>
+        <select *ngIf="isProgrammingCardHeader" [(ngModel)]="selectedLanguage" (change)="updateSelectedLanguage(selectedLanguage)">
+            <option *ngFor="let language of programmingLanguages" [value]="language">{{ language }}</option>
+        </select>
+        <button (click)="toggleExpansion()" class="btn-expand">
+            <i class="fas fa-solid" 
+                [class.fa-up-right-and-down-left-from-center]="!isExpanded"
+                [class.fa-down-left-and-up-right-to-center]="isExpanded"></i>
+        </button>
+    </div>
 </div>

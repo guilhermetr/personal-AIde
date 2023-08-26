@@ -1,12 +1,29 @@
-.card {
-    height: 240px;
+.card {    
     border-radius: .5rem;    
     margin: 1.25rem 0 1.25rem 0;
-    box-shadow: 0 0 .75rem var(--box-shadow);    
-    background-color: var(--card-primary);    
+    box-shadow: 0 0 .75rem var(--box-shadow);
+    background-color: var(--card-primary);
+    transition: all .5s ease;
+    position: relative;
 }
 
 .expanded-card {
-    height: 90vh;
+    height: 88vh !important;
     width: 75vw;
+}
+
+.card-body {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.code-editors {
+    flex-grow: 1; /* This makes .code-editors grow to take up the remaining space */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+::ng-deep .code-editors * {
+    transition: none !important; /* Remove transitions for the monaco-editor component*/
 }

@@ -8,6 +8,7 @@ import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog
 })
 export class ProgrammingCardComponent implements OnInit {
 
+  codeEditorHeight = "100%"
   @Input() headerText: string = "";
   isExpanded: boolean = false;
 
@@ -24,8 +25,10 @@ export class ProgrammingCardComponent implements OnInit {
   }
   
   toggleExpansion(): void {  
-    if (!this.isExpanded)  
+    if (!this.isExpanded) {
       this.openDialog();
+      this.codeEditorHeight = "100%";
+    }      
     else
       this.closeDialog();
   }

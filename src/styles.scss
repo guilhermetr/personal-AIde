@@ -12,8 +12,15 @@
 
 body {
     position: relative;
-    font-family: 'Roboto', sans-serif;
-    // background: #f4f7fa;
+    font-family: 'Roboto', sans-serif;    
+}
+
+body * {
+    transition: all .5s ease;
+
+    button, i {
+        transition: none;
+    }
 }
 
 h1 {
@@ -34,14 +41,6 @@ body {
     transition: all .5s ease;
 }
 
-body * {
-    transition: all .5s ease;
-
-    button, i {
-        transition: none;
-    }
-}
-
 body {
     /* Text */
     --text-primary: rgb(34,34,34);
@@ -55,7 +54,8 @@ body {
     /* Button */
     --btn-primary: rgb(94,94,94);
     --btn-active: rgb(31,31,31);
-    --btn-hover: rgb(31,31,31);    
+    --btn-hover: rgb(31,31,31);
+    --btn-bg-primary: rgb(0,122,255);
 
     /* Card */
     --card-primary: rgb(239, 239, 239);
@@ -79,13 +79,14 @@ body.dark-theme {
     /* Button */
     --btn-primary: rgb(100, 100, 100);
     --btn-active: rgb(215,215,215);
-    --btn-hover: rgb(215,215,215);    
+    --btn-hover: rgb(215,215,215);
+    --btn-bg-primary: rgb(0,122,255);
 
     /* Card */
-    --card-primary: rgb(45,45,45);
-    --card-secondary: rgb(55,55,55);
+    --card-primary: rgb(30,30,30);
+    --card-secondary: rgb(40,40,40);
 
     /* General */
-    --background: rgb(31,31,31);    
+    --background: rgb(45,45,45);    
     --box-shadow: #0b0b0b;
 }

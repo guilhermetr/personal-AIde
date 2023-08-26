@@ -1,5 +1,5 @@
 .card-header {
-    padding: .8rem;
+    padding: .6rem;
     border-bottom: 1px solid var(--card-secondary);
     font-size: 1rem;
     font-weight: 600;
@@ -19,4 +19,16 @@
 
 .btn-expand:hover {
     color: var(--btn-hover);
+}
+
+select {
+    padding: 0.1rem;
+    border: 1px solid var(--card-secondary);    
+    font-size: 0.9rem;
+    border-radius: 0.25rem;
+    color: var(--text-primary);
+    background-color: var(--card-secondary);
+    cursor: pointer;
+    outline: none;
+    margin-right: 0.8rem;
 }

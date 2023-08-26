@@ -1,5 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import * as monaco from 'monaco-editor';
+import { Component, Input, OnInit } from '@angular/core';
+import { NuMonacoEditorEvent, NuMonacoEditorModel } from '@ng-util/monaco-editor';
+import { ProgrammingLanguage } from '../../enums';
+import { ProgrammingService } from '../../cards/programming-card/programming-card.service';
 
 @Component({
   selector: 'widgets-code-editor',
@@ -7,9 +9,23 @@ import * as monaco from 'monaco-editor';
   styleUrls: ['./code-editor.component.scss']
 })
 export class CodeEditorComponent implements OnInit {
-  editorOptions = {theme: 'vs-dark', language: 'javascript'};
-  code: string= 'function x() {\nconsole.log("Hello world!");\n}';
+  @Input() readonly: boolean = false;
+  options = { theme: 'vs-dark' };
+  model!: NuMonacoEditorModel;
+  selectedLanguage: ProgrammingLanguage = ProgrammingLanguage.JavaScript;
+  codeInput: string = "";
 
-  ngOnInit(): void { }
+  constructor(private programmingService: ProgrammingService) {}
 
+  ngOnInit(): void {
+    this.model = {      
+      language: this.selectedLanguage.toString(),
+    };
+
+    // Subscribe to the selected language changes
+    this.programmingService.getSelectedLanguage().subscribe(language => {
+      this.selectedLanguage = language;
+      this.model.language = ProgrammingLanguage[language as keyof typeof ProgrammingLanguage].toLowerCase();
+    });
+  }
 }

@@ -7,7 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TextInputAreaComponent implements OnInit {
   
-  @Input() title: string = "Title";
   inputValue: string = '';
 
   constructor() { }

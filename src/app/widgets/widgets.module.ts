@@ -12,7 +12,9 @@ import { CardHeaderComponent } from './utils/cards/card-header/card-header.compo
 import { ProgrammingCardComponent } from './utils/cards/programming-card/programming-card.component';
 import { CodeCleanerComponent } from './programming/code-cleaner/code-cleaner.component';
 import { CodeEditorComponent } from './utils/input/code-editor/code-editor.component';
-import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { NuMonacoEditorModule } from '@ng-util/monaco-editor';
+import { RecreateViewDirective } from './utils/recreate-view.directive';
+import { TextInputComponent } from './utils/input/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,13 @@ import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
     ProgrammingCardComponent,
     CodeCleanerComponent,
     CodeEditorComponent,
+    RecreateViewDirective,
+    TextInputComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    MonacoEditorModule
+    NuMonacoEditorModule
   ],
   exports: []
 })

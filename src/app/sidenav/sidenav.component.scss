@@ -5,7 +5,8 @@
     top: 0;
     width: 16rem;
     height: 100vh;
-    box-shadow: 0.063rem 0 1.25rem 0 var(--box-shadow);    
+    box-shadow: 0.063rem 0 1.25rem 0 var(--box-shadow);
+    transition: all .5s ease;
 
     .logo-container {
         display: flex;

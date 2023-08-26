@@ -1,0 +1,40 @@
+.input-container {
+    position: relative;    
+    height: 40px;    
+    border-radius: 0 0 .5rem .5rem;
+    background-color: var(--card-secondary);
+    padding: 10px;
+    color: var(--text-primary);
+    box-shadow: 0 -5px 5px -5px var(--box-shadow); /* Apply shadow only to the top */
+    display: flex;
+    align-items: center;
+}
+
+.input-container input {
+    flex-grow: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;    
+    font-size: 14px;
+    color: var(--text-primary);    
+}
+
+.input-button {
+    position: absolute;
+    right: 10px;
+    height: 70%;
+    background-color: var(--btn-bg-primary);
+    border: none;
+    border-radius: .5rem;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-size: 13px;
+    transition: filter 0.2s;
+}
+
+.input-button:hover {
+    filter: brightness(0.8);
+}

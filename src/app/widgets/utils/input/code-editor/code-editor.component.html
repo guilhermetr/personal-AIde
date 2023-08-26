@@ -1,1 +1,7 @@
-<ngx-monaco-editor style="height: 100%" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+
+<nu-monaco-editor 
+    [(ngModel)]="codeInput"
+    *wRecreateViewKey="selectedLanguage" 
+    height="100%" #a [model]="model" [options]="options"
+    [disabled]="readonly">    
+</nu-monaco-editor>

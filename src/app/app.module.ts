@@ -16,7 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BodyComponent } from './body/body.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ThemeToggleComponent } from './theme/theme-toggle/theme-toggle.component';
-import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { NuMonacoEditorModule } from '@ng-util/monaco-editor';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -46,7 +46,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatToolbarModule,
     MatDialogModule,
-    MonacoEditorModule.forRoot()
+    NuMonacoEditorModule.forRoot() // use forRoot() in main app module only.
   ],
   providers: [],
   bootstrap: [AppComponent]

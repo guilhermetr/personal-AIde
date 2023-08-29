@@ -20,10 +20,8 @@ import {
   
     ngOnChanges(changes: SimpleChanges): void {
       if (changes['key']) {
-        if (this.viewRef) {
-          this.destroyView();
-        }
-  
+        if (this.viewRef)
+          this.destroyView();          
         this.createView();
       }
     }

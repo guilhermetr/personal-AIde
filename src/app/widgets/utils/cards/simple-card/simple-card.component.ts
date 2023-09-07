@@ -1,4 +1,5 @@
 import { Component, Inject, Input, OnInit, Optional, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 
 // A simple container for widgets with a header and an input area
@@ -9,19 +10,33 @@ import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog
 })
 export class SimpleCardComponent implements OnInit {
 
+  dialogRef!: MatDialogRef<SimpleCardComponent>
+
   @Input() headerText: string = "";
   isExpanded: boolean = false;
 
+  textInput: string = "";
+  textOutput: string = "";
+
   // The MAT_DIALOG_DATA injection token is used to inject data into the dialog component through its constructor.
   // This is used when the simple-card-component is opened as a dialog (when it's expanded).
-  constructor(public dialog: MatDialog, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
-    if (data) {
-      this.headerText = data.headerText;
-      this.isExpanded = data.isExpanded;
-    }
-  }
+  constructor(
+    public dialog: MatDialog, 
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   ngOnInit(): void {
+    const isDialog = this.dialogRef != undefined;
+    if (isDialog) {
+      this.headerText = this.data.headerText;
+      this.isExpanded = this.data.isExpanded;
+      this.textInput = this.data.textInput;
+      this.textOutput = this.data.textOutput;
+
+      this.dialogRef.backdropClick().subscribe(() => {
+        this.closeDialog();
+      });
+    }
   }
   
   toggleExpansion(): void {  
@@ -39,13 +54,24 @@ export class SimpleCardComponent implements OnInit {
     dialogConfig.data = {
       headerText: this.headerText,
       isExpanded: true,
+      textInput: this.textInput,
+      textOutput: this.textOutput,
     };
 
-    this.dialog.open(SimpleCardComponent, dialogConfig);
+    const dialogRef = this.dialog.open(SimpleCardComponent, dialogConfig);
+    dialogRef.componentInstance.dialogRef = dialogRef;
+    
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.textInput = result.textInput;
+      this.textOutput = result.codeOutput;
+    });
   }
 
   closeDialog(): void {
-    this.dialog.closeAll();
+    this.dialogRef.close({            
+      textInput: this.textInput,
+      textOutput: this.textOutput,
+     });
   }
 
 }

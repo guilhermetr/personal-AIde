@@ -7,7 +7,6 @@ import { SummarizerComponent } from './writing/summarizer/summarizer.component';
 import { DualTextAreaComponent } from './utils/input/dual-text-area/dual-text-area.component';
 import { SimpleCardComponent } from './utils/cards/simple-card/simple-card.component';
 import { FormalizerComponent } from './writing/formalizer/formalizer.component';
-import { TextInputAreaComponent } from './utils/input/text-input-area/text-input-area.component';
 import { CardHeaderComponent } from './utils/cards/card-header/card-header.component';
 import { ProgrammingCardComponent } from './utils/cards/programming-card/programming-card.component';
 import { CodeCleanerComponent } from './programming/code-cleaner/code-cleaner.component';
@@ -24,7 +23,6 @@ import { TextInputComponent } from './utils/input/text-input/text-input.componen
     DualTextAreaComponent,
     SimpleCardComponent,
     FormalizerComponent,
-    TextInputAreaComponent,
     CardHeaderComponent,
     ProgrammingCardComponent,
     CodeCleanerComponent,

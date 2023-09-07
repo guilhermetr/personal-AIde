@@ -7,9 +7,9 @@
     </widgets-card-header>
     <div class="card-body" [ngClass]="{ 'expanded-card': isExpanded }">
         <div class="code-editors">
-            <widgets-code-editor></widgets-code-editor>
-            <widgets-code-editor [readonly]="true"></widgets-code-editor>
+            <widgets-code-editor [(ngModel)]="codeInput"></widgets-code-editor>
+            <widgets-code-editor [(ngModel)]="codeOutput" [readonly]="true"></widgets-code-editor>
         </div>        
-        <widgets-text-input placeholder="Add context here..."></widgets-text-input>
+        <widgets-text-input [(ngModel)]="textInput" placeholder="Add context here..."></widgets-text-input>
     </div>
 </div>

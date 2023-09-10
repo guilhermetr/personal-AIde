@@ -60,8 +60,9 @@
             align-items: center;            
             height: 3rem;
             text-decoration: none;            
-            transition: all .3s ease;
+            transition: none;
             color: var(--btn-primary);
+            caret-color: transparent;
 
             .sidenav-link-icon {
                 font-size: 22px;
@@ -84,18 +85,12 @@
         }
     }
 
-    .sidenav-nav-submenu {
-        list-style: none;
-        display: none;
+    .sidenav-nav-submenu:hover {
+        background-color: var(--sdnv-item-hover-primary) !important;
     }
 
-    .sidenav-nav-submenu.active {
-        display: block;
-        border-radius: 0.625rem; 
-    }        
-
-    .sidenav-nav-item:hover {
-        background-color: var(--sdnv-item-hover);
+    .sidenav-nav-submenu-active {
+        background-color: var(--sdnv-item-active-primary);
 
         .sidenav-link-icon,        
         .sidenav-link-caret {
@@ -103,15 +98,51 @@
         }
     }
 
-    .sidenav-nav-item.active {
-        background-color: var(--sdnv-item-active);
+    .sidenav-nav-submenu-items {
+        list-style: none;
+        overflow: hidden;
+    }
 
-        .sidenav-link-text {
-            color: var(--text-primary)
+    .sidenav-nav-submenu-item {
+        border-radius: 0.625rem;
+
+        .sidenav-link-icon {
+            color: var(--btn-primary);
         }
+    }
+
+    // Applies the background color to .sidenav-nav-submenu-item.active only when .sidenav-nav-submenu is not being hovered 
+    .sidenav-nav-submenu:not(:hover) .sidenav-nav-submenu-item.active {
+        background-color: var(--sdnv-item-active-secondary);
+    }
+
+    .sidenav-nav-submenu-item.active {
+        .sidenav-link-icon {
+            color: var(--btn-active);
+        }
+    }
+
+    .sidenav-nav-submenu-item:hover {
+        background-color: var(--sdnv-item-hover-secondary);        
 
         .sidenav-link-icon,        
         .sidenav-link-caret {
+            color: var(--btn-hover);
+        }
+    }    
+
+    .sidenav-nav-simple-item:hover {
+        background-color: var(--sdnv-item-hover-primary) !important;
+
+        .sidenav-link-icon {
+            color: var(--btn-hover);
+        }
+    }
+
+    .sidenav-nav-simple-item.active {
+        background-color: var(--sdnv-item-active-primary);
+
+        .sidenav-link-icon {
             color: var(--btn-active);
         }
     }

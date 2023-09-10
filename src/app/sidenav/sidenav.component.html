@@ -4,24 +4,32 @@
         <div class="logo-text" @fadeInOut *ngIf="!collapsed">AIde</div>        
     </div>
     <ul class="sidenav-nav">
-        <li class="sidenav-nav-item" *ngFor="let data of navData" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <li *ngFor="let data of navData" 
+            class="sidenav-nav-item"
+            [class.sidenav-nav-simple-item]="!isSubmenu(data)"
+            [class.sidenav-nav-submenu]="isSubmenu(data)"
+            [class.sidenav-nav-submenu-active]="isSubmenu(data) && isSubmenuActive(data)"
+            routerLinkActive="active" 
+            [routerLinkActiveOptions]="{exact: true}">
             <a class="sidenav-nav-link"
-                [class.submenu-toggle]="data.children" 
-                [routerLink]="data.routerLink"
-                (click)="data.children ? toggleSubmenu(data.label) : null">
+                [class.submenu-toggle]="isSubmenu(data)" 
+                [routerLink]="!isSubmenu(data) ? data.routerLink : null"
+                (click)="isSubmenu(data) ? toggleSubmenu(data.label) : null">
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
                 <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">
                     {{ data.label }}
                 </span>
-                <i *ngIf="data.children && !collapsed" @fadeInOut 
-                    class="sidenav-link-caret fa-solid"
-                    [class.fa-caret-down]="submenusState[data.label]"
-                    [class.fa-caret-up]="!submenusState[data.label]"></i>
+                <i *ngIf="isSubmenu(data) && !collapsed" @fadeInOut 
+                    class="sidenav-link-caret fa-solid fa-caret-down"
+                    [@rotateCaret]="submenuCollapsed[data.label] ? 'down' : 'up'"></i>
             </a>
-            <ul *ngIf="data.children" class="sidenav-nav-submenu">
+            <ul *ngIf="isSubmenu(data)"
+            [@slideVertically]="submenuCollapsed[data.label] ? 'hidden' : 'visible'"
+            class="sidenav-nav-submenu-items">
                 <li *ngFor="let childData of data.children">
-                    <a class="sidenav-nav-link"                        
-                        [routerLink]="childData.routerLink">
+                    <a class="sidenav-nav-submenu-item sidenav-nav-link"
+                        [routerLink]="childData.routerLink"
+                        routerLinkActive="active">
                         <i class="sidenav-link-icon" [class]="childData.icon"></i>
                         <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">
                             {{ childData.label }}
@@ -38,7 +46,7 @@
         
         <button class="btn-collapse"
             (click)="toggleCollapse()"
-            [@slideAndRotate]="collapsed">
+            [@slideHorizontallyAndRotate]="collapsed">
             <i class="fa-solid fa-arrow-left"></i>
         </button>        
     </div>

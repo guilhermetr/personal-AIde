@@ -16,6 +16,6 @@ export class Timer {
     }
   
     clear() {
-      clearInterval(this.timer);
+      // clearInterval(this.timer);
     }
 }

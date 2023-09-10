@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { SideNavToggle } from '../utils/sidenav-toggle';
 import { navbarData } from './nav-data';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -22,7 +23,7 @@ import { navbarData } from './nav-data';
         )
       ])
     ]),
-    trigger('slideAndRotate', [
+    trigger('slideHorizontallyAndRotate', [
       state('false', style({
         transform: 'translateX(0) rotate(0)'
       })),
@@ -31,6 +32,27 @@ import { navbarData } from './nav-data';
       })),
       transition('false => true', animate('300ms ease-in')),
       transition('true => false', animate('300ms ease-out'))
+    ]),
+    trigger('slideVertically', [
+      state('hidden', style({
+        height: '0px',
+        opacity: '0',
+        overflow: 'hidden'
+      })),
+      state('visible', style({
+        height: '*',
+        opacity: '1'
+      })),
+      transition('hidden <=> visible', [
+        animate('300ms ease-in-out')
+      ])
+    ]),
+    trigger('rotateCaret', [
+      state('down', style({ transform: 'rotate(0deg)' })),
+      state('up', style({ transform: 'rotate(-180deg)' })),
+      transition('down <=> up', [
+        animate('250ms ease-in-out')
+      ])
     ])
   ]
 })
@@ -38,30 +60,19 @@ export class SidenavComponent implements OnInit {
 
   @Output() onToggleSidenav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
-  submenusState: { [key: string]: boolean } = {} // Indicates if submenus are collapsed
+  submenuCollapsed: { [key: string]: boolean } = {} // Indicates if submenus are collapsed
   screenWidth = 0;
   navData = navbarData
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     this.navData.forEach(data => {
       if (data.children) {
-        this.submenusState[data.label] = true;
+        this.submenuCollapsed[data.label] = true;
       }
     });    
-  }
-
-  ngAfterViewInit() {
-    const submenuToggleElements = this.elementRef.nativeElement.querySelectorAll('.submenu-toggle');    
-    submenuToggleElements.forEach((toggleElement: any) => {      
-      toggleElement.addEventListener('click', () => {
-        toggleElement.classList.toggle('active');
-        const submenuElement = toggleElement.nextElementSibling; // <ul> element
-        submenuElement.classList.toggle('active');
-      });
-    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -78,8 +89,30 @@ export class SidenavComponent implements OnInit {
     this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth})
   }
 
-  toggleSubmenu(key: string): void {
-    this.submenusState[key] = !this.submenusState[key];
+  toggleSubmenu(label: string): void {
+    this.submenuCollapsed[label] = !this.submenuCollapsed[label];
+  }
+
+  isSubmenu(data: any): boolean {
+    return data.children;
+  }
+
+  isSubmenuActive(data: any): boolean {
+    return !this.submenuCollapsed[data.label] || this.isChildRouteActive(data);
+  }
+
+  // When a child route from the submenu is active (even if its collapsed)
+  isChildRouteActive(data: any): boolean {
+    let isActive = false;
+    if (data.children) {
+        for (const child of data.children) {
+            if (this.router.isActive(child.routerLink, true)) {
+                isActive = true;
+                break;
+            }
+        }
+    }
+    return isActive;
   }
 
 }

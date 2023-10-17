@@ -34,6 +34,7 @@ export class TextInputComponent implements OnInit, AfterViewInit, ControlValueAc
 
   @ViewChild('textInputArea') textInput!: ElementRef;
   @Output() heightChanged = new EventEmitter<number>();
+  @Output() inputSubmitted = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.maxHeight = `${this.parentHeight / 2}px`;
@@ -80,5 +81,10 @@ export class TextInputComponent implements OnInit, AfterViewInit, ControlValueAc
     if (newHeight !== previousHeight) {
       this.heightChanged.emit(Math.min(newHeight, maxHeight));
     }
+  }
+
+  onSubmit() {
+    if (this.value.length > 0)
+      this.inputSubmitted.emit(this.value);
   }
 } 

@@ -13,12 +13,13 @@ export class SimpleCardComponent implements OnInit {
 
   dialogRef!: MatDialogRef<SimpleCardComponent>
 
-  @Input() headerText: string = "";
-  isExpanded: boolean = false;
+  @Input() headerText: string = "";  
   cardBodyHeight: number = 300;
-
   textInput: string = "";
   textOutput: string = "";
+
+  isExpanded: boolean = false;
+  isLoading: boolean = false;
 
   @ViewChild(TextInputComponent) textInputComponent!: TextInputComponent;
 
@@ -80,6 +81,17 @@ export class SimpleCardComponent implements OnInit {
       textInput: this.textInput,
       textOutput: this.textOutput,
      });
+  }
+
+  handleInputSubmit(event: any): void {
+      this.isLoading = true;
+
+      // Simulate API call delay using setTimeout
+      setTimeout(() => {
+          // Handle the logic of sending the input to the API here
+
+          this.isLoading = false;  // Set loading to false after getting the API response
+      }, 2000);  // Simulating a delay of 2 seconds for the API response
   }
 
 }

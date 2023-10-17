@@ -20,12 +20,14 @@
                 [height]="codeEditorHeight + 'px'">
             </widgets-code-editor>
         </div>        
+        <widgets-loading-overlay [isLoading]="isLoading"></widgets-loading-overlay>
         <div class="text-input-area">
             <widgets-text-input 
                 [(ngModel)]="textInput" 
-                placeholder="Add context here..."
-                (heightChanged)="onInputHeightChanged($event)"
-                [parentHeight]="cardBodyHeight">
+                placeholder="Add context here..."                
+                [parentHeight]="cardBodyHeight"
+                (heightChanged)="handleInputHeightChanged($event)"
+                (inputSubmitted)="handleInputSubmit($event)">
             </widgets-text-input>
         </div>
     </div>

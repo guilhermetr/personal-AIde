@@ -6,7 +6,7 @@
         rows="1" 
         (input)="adjustHeight()"
         [style.max-height]="maxHeight"></textarea>
-    <button class="input-button">
+    <button class="input-button" (click)="onSubmit()">
         <i class="fa-solid fa-paper-plane"></i>
     </button>
 </div>

@@ -36,8 +36,7 @@ import { Router, ActivatedRoute } from '@angular/router';
     trigger('slideVertically', [
       state('hidden', style({
         height: '0px',
-        opacity: '0',
-        overflow: 'hidden'
+        opacity: '0',        
       })),
       state('visible', style({
         height: '*',

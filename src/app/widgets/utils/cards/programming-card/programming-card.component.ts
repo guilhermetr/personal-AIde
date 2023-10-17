@@ -14,15 +14,16 @@ export class ProgrammingCardComponent implements OnInit {
   dialogRef!: MatDialogRef<ProgrammingCardComponent>
   isDialog!: boolean;
   
-  @Input() headerText: string = "";
-  isExpanded: boolean = false;
+  @Input() headerText: string = "";  
   cardBodyHeight: number = 300;
   expandedCardBodyHeight: string = '88vh'
   codeEditorHeight!: number;
-
   codeInput: string = "";
   codeOutput: string = "";
   textInput: string = "";
+
+  isExpanded: boolean = false;
+  isLoading: boolean = false;
 
   @ViewChild('inputCodeEditor') inputCodeEditorComponent!: CodeEditorComponent;
   @ViewChild('outputCodeEditor') outputCodeEditorComponent!: CodeEditorComponent;
@@ -93,7 +94,7 @@ export class ProgrammingCardComponent implements OnInit {
      });
   }
 
-  onInputHeightChanged(height: number) {    
+  handleInputHeightChanged(height: number) {    
     const newCodeEditorHeight = this.cardBodyHeight - height;
     if (this.codeEditorHeight != newCodeEditorHeight) {
       this.updateEditorsHeight(newCodeEditorHeight);
@@ -105,6 +106,17 @@ export class ProgrammingCardComponent implements OnInit {
     this.inputCodeEditorComponent.height = `${height}px`;
     this.inputCodeEditorComponent.updateView = !this.inputCodeEditorComponent.updateView;
     this.outputCodeEditorComponent.updateView = !this.inputCodeEditorComponent.updateView;
+  }
+
+  handleInputSubmit(event: any): void {
+    this.isLoading = true;
+
+    // Simulate API call delay using setTimeout
+    setTimeout(() => {
+        // Handle the logic of sending the input to the API here
+
+        this.isLoading = false;  // Set loading to false after getting the API response
+    }, 2000);  // Simulating a delay of 2 seconds for the API response
   }
 
 }

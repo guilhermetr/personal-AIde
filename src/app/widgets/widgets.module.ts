@@ -14,6 +14,7 @@ import { CodeEditorComponent } from './utils/input/code-editor/code-editor.compo
 import { NuMonacoEditorModule } from '@ng-util/monaco-editor';
 import { RecreateViewDirective } from '../utils/directives/recreate-view.directive';
 import { TextInputComponent } from './utils/input/text-input/text-input.component';
+import { LoadingOverlayComponent } from './utils/cards/loading-overlay/loading-overlay.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TextInputComponent } from './utils/input/text-input/text-input.componen
     CodeEditorComponent,
     RecreateViewDirective,
     TextInputComponent,
+    LoadingOverlayComponent,
   ],
   imports: [
     CommonModule,

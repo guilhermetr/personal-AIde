@@ -7,10 +7,12 @@
     <div class="card-body text-input-area-container" 
         [ngClass]="{ 'expanded-card': isExpanded }">
         <textarea readonly></textarea>
+        <widgets-loading-overlay [isLoading]="isLoading"></widgets-loading-overlay>
         <div class="text-input-area">
             <widgets-text-input 
                 [(ngModel)]="textInput"
-                [parentHeight]="cardBodyHeight">
+                [parentHeight]="cardBodyHeight"
+                (inputSubmitted)="handleInputSubmit($event)">
             </widgets-text-input>
         </div>
     </div>    

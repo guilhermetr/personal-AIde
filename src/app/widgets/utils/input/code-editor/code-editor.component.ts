@@ -20,6 +20,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CodeEditorComponent implements OnInit, ControlValueAccessor {
   @Input() readonly: boolean = false;
+  @Input() height: string = '100%';
   options = { theme: 'vs-dark' };  
   model!: NuMonacoEditorModel;  
 

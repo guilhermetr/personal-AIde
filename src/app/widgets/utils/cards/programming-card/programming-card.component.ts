@@ -1,6 +1,8 @@
-import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
+import { TextInputComponent } from '../../input/text-input/text-input.component';
+import { CodeEditorComponent } from '../../input/code-editor/code-editor.component';
 
 @Component({
   selector: 'widgets-programming-card',
@@ -10,14 +12,22 @@ import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog
 export class ProgrammingCardComponent implements OnInit {
 
   dialogRef!: MatDialogRef<ProgrammingCardComponent>
-
-  codeEditorHeight = "100%"
+  isDialog!: boolean;
+  
   @Input() headerText: string = "";
   isExpanded: boolean = false;
+  cardBodyHeight: number = 300;
+  expandedCardBodyHeight: string = '88vh'
+  codeEditorHeight!: number;
 
   codeInput: string = "";
   codeOutput: string = "";
   textInput: string = "";
+
+  @ViewChild('inputCodeEditor') inputCodeEditorComponent!: CodeEditorComponent;
+  @ViewChild('outputCodeEditor') outputCodeEditorComponent!: CodeEditorComponent;
+  @ViewChild('cardBody') cardBody!: ElementRef;
+  @ViewChild(TextInputComponent) textInputComponent!: TextInputComponent;
 
   // The MAT_DIALOG_DATA injection token is used to inject data into the dialog component through its constructor.
   // This is used when the simple-card-component is opened as a dialog (when it's expanded).
@@ -27,8 +37,8 @@ export class ProgrammingCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const isDialog = this.dialogRef != undefined;
-    if (isDialog) {
+    this.isDialog = this.dialogRef != undefined;
+    if (this.isDialog) {
       this.headerText = this.data.headerText;
       this.isExpanded = this.data.isExpanded;
       this.codeInput = this.data.codeInput;
@@ -41,12 +51,9 @@ export class ProgrammingCardComponent implements OnInit {
     }
   }
   
-  
   toggleExpansion(): void {  
-    if (!this.isExpanded) {
+    if (!this.isExpanded)
       this.openDialog();
-      this.codeEditorHeight = "100%";
-    }      
     else
       this.closeDialog();
   }
@@ -71,6 +78,10 @@ export class ProgrammingCardComponent implements OnInit {
       this.codeInput = result.codeInput;
       this.codeOutput = result.codeOutput;
       this.textInput = result.textInput;
+      // setTimeout pushes the height adjustment to the end of the call stack, ensuring that the view is fully rendered
+      setTimeout(() => {
+        this.textInputComponent.adjustHeight();
+      });  
     });
   }
 
@@ -80,6 +91,20 @@ export class ProgrammingCardComponent implements OnInit {
       codeOutput: this.codeOutput,
       textInput: this.textInput
      });
+  }
+
+  onInputHeightChanged(height: number) {    
+    const newCodeEditorHeight = this.cardBodyHeight - height;
+    if (this.codeEditorHeight != newCodeEditorHeight) {
+      this.updateEditorsHeight(newCodeEditorHeight);
+    }    
+  }
+
+  updateEditorsHeight(height: number) {
+    this.codeEditorHeight = height;
+    this.inputCodeEditorComponent.height = `${height}px`;
+    this.inputCodeEditorComponent.updateView = !this.inputCodeEditorComponent.updateView;
+    this.outputCodeEditorComponent.updateView = !this.inputCodeEditorComponent.updateView;
   }
 
 }

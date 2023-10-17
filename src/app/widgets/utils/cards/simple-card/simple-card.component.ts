@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnInit, Optional, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
+import { TextInputComponent } from '../../input/text-input/text-input.component';
 
 // A simple container for widgets with a header and an input area
 @Component({
@@ -14,9 +15,12 @@ export class SimpleCardComponent implements OnInit {
 
   @Input() headerText: string = "";
   isExpanded: boolean = false;
+  cardBodyHeight: number = 300;
 
   textInput: string = "";
   textOutput: string = "";
+
+  @ViewChild(TextInputComponent) textInputComponent!: TextInputComponent;
 
   // The MAT_DIALOG_DATA injection token is used to inject data into the dialog component through its constructor.
   // This is used when the simple-card-component is opened as a dialog (when it's expanded).
@@ -43,7 +47,7 @@ export class SimpleCardComponent implements OnInit {
     if (!this.isExpanded)  
       this.openDialog();
     else
-      this.closeDialog();
+      this.closeDialog();    
   }
 
   openDialog(): void {
@@ -64,6 +68,10 @@ export class SimpleCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {
       this.textInput = result.textInput;
       this.textOutput = result.codeOutput;
+      // setTimeout pushes the height adjustment to the end of the call stack, ensuring that the view is fully rendered
+      setTimeout(() => {
+        this.textInputComponent.adjustHeight();
+      });  
     });
   }
 

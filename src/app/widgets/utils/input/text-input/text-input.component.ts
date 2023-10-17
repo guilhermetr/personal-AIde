@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -13,7 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class TextInputComponent implements OnInit, ControlValueAccessor {
+export class TextInputComponent implements OnInit, AfterViewInit, ControlValueAccessor {
   
   private _value: string = '';
   get value(): string {
@@ -26,11 +26,27 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   }
 
   @Input() placeholder: string = "Enter text here...";
+  @Input() parentHeight!: number;
+  maxHeight!: string;
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  ngOnInit(): void {}
+  @ViewChild('textInputArea') textInput!: ElementRef;
+  @Output() heightChanged = new EventEmitter<number>();
+
+  ngOnInit(): void {
+    this.maxHeight = `${this.parentHeight / 2}px`;
+  }
+
+  ngAfterViewInit(): void {
+    // setTimeout pushes the height adjustment to the end of the call stack, ensuring that the view is fully rendered
+    setTimeout(() => {
+      this.adjustHeight();
+      // Emit initial height
+      this.heightChanged.emit(this.textInput.nativeElement.offsetHeight);
+    });
+  }
 
   writeValue(val: any): void {
     this.value = val;
@@ -42,5 +58,27 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  adjustHeight(): void {
+    const textarea = this.textInput.nativeElement;
+    const previousHeight = textarea.offsetHeight;
+    // Reset the height to its default to get the scrollHeight correctly
+    textarea.style.height = 'auto';
+    // Set the height to the scrollHeight (the full height of the content)
+    const newHeight = textarea.scrollHeight;
+    textarea.style.height = `${newHeight}px`;
+
+    // Adjust top position so the textarea grows upwards
+    const heightDifference = newHeight - previousHeight;
+    if (heightDifference > 0) {
+        textarea.style.top = `${parseInt(textarea.style.top || '0') - heightDifference}px`;
+    }
+
+    // Emit the higher height: newHeight or maxHeight
+    const maxHeight = this.parentHeight / 2;  
+    if (newHeight !== previousHeight) {
+      this.heightChanged.emit(Math.min(newHeight, maxHeight));
+    }
   }
 } 

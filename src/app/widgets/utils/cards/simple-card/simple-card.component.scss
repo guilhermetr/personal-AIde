@@ -12,14 +12,15 @@
 }
 
 .card-body {
-    height: 300px;
+    --card-body-height: 300px;
+    height: var(--card-body-height);
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
 textarea {
-    font-family: 'Roboto', sans-serif;
+    flex-grow: 1;    
     font-size: 14px;
     font-weight: 300;
     width: 100%;

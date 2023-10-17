@@ -1,5 +1,11 @@
 <div class="input-container">
-    <input [(ngModel)]="value" type="text" [placeholder]="placeholder">
+    <textarea 
+        #textInputArea 
+        [(ngModel)]="value" 
+        [placeholder]="placeholder" 
+        rows="1" 
+        (input)="adjustHeight()"
+        [style.max-height]="maxHeight"></textarea>
     <button class="input-button">
         <i class="fa-solid fa-paper-plane"></i>
     </button>

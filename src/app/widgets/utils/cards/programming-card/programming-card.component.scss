@@ -4,7 +4,6 @@
     box-shadow: 0 0 .75rem var(--box-shadow);
     background-color: var(--card-primary);
     transition: all .5s ease;
-    position: relative;
 }
 
 .expanded-card {
@@ -13,15 +12,24 @@
 }
 
 .card-body {
-    height: 300px;
+    position: relative;    
     display: flex;
     flex-direction: column;
 }
 
 .code-editors {
+    position: relative;
+    z-index: 1; /* This will place it below the text-input-area */
     flex-grow: 1; /* This makes .code-editors grow to take up the remaining space */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.text-input-area {
+    position: absolute; 
+    bottom: 0;
+    width: 100%;
+    z-index: 2; /* This will place it above the code-editors */
 }
 
 ::ng-deep .code-editors * {

@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { WidgetsModule } from './widgets/widgets.module';
 import { GridComponent } from './grid/grid.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,14 +17,35 @@ import { BodyComponent } from './body/body.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ThemeToggleComponent } from './theme/theme-toggle/theme-toggle.component';
 import { NuMonacoEditorModule } from '@ng-util/monaco-editor';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { AuthRedirectGuard } from './auth-redirect.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'categories', children: [
-    { path: ':categoryName', component: CategoriesComponent }
-  ]},  
-]
+  { 
+    path: 'login', 
+    component: LoginComponent, 
+    canActivate: [AuthRedirectGuard] },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'categories',
+    children: [
+      { path: ':categoryName', component: CategoriesComponent }
+    ],
+    canActivate: [AuthGuard]
+  },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/dashboard' }
+];
+
+
+
 
 @NgModule({
   declarations: [
@@ -36,6 +57,7 @@ const routes: Routes = [
     BodyComponent,
     CategoriesComponent,
     ThemeToggleComponent,
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -48,7 +70,10 @@ const routes: Routes = [
     MatDialogModule,
     NuMonacoEditorModule.forRoot() // use forRoot() in main app module only.
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

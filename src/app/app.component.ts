@@ -3,6 +3,8 @@ import { SummarizerComponent } from './widgets/writing/summarizer/summarizer.com
 import { TranslatorComponent } from './widgets/writing/translator/translator.component';
 import { SideNavToggle } from './utils/sidenav-toggle';
 import { ThemeService } from './theme/theme.service';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +16,18 @@ export class AppComponent {
     { component: SummarizerComponent, inputs: { /* input properties */ } },
     { component: TranslatorComponent, inputs: { /* input properties */ } },
   ];
+  isLoggedIn = false;
   isSidenavCollapsed = false;
   screenWidth = window.innerWidth;
 
-  constructor(public themeService: ThemeService) {
-  }
+  constructor(public themeService: ThemeService, private authService: AuthService) { }
 
+  ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    });
+  }
+  
   onToggleSidenav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSidenavCollapsed = data.collapsed;

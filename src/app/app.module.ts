@@ -18,34 +18,38 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ThemeToggleComponent } from './theme/theme-toggle/theme-toggle.component';
 import { NuMonacoEditorModule } from '@ng-util/monaco-editor';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth.guard';
-import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { AuthRedirectGuard } from './auth-redirect.guard';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
+import { environment } from '../environments/environment';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToDashboard = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
   { 
     path: 'login', 
-    component: LoginComponent, 
-    canActivate: [AuthRedirectGuard] },
+    component: LoginComponent,
+    canActivate: [AngularFireAuthGuard], 
+    data: { authGuardPipe: redirectLoggedInToDashboard } 
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AngularFireAuthGuard], 
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'categories',
     children: [
       { path: ':categoryName', component: CategoriesComponent }
     ],
-    canActivate: [AuthGuard]
+    canActivate: [AngularFireAuthGuard], 
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/dashboard' }
 ];
-
-
-
 
 @NgModule({
   declarations: [
@@ -68,12 +72,11 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatToolbarModule,
     MatDialogModule,
-    NuMonacoEditorModule.forRoot() // use forRoot() in main app module only.
+    NuMonacoEditorModule.forRoot(), // use forRoot() in main app module only.
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { FirebaseAuthService } from '../authentication/firebase-auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,17 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username!: string;
-  password!: string;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: FirebaseAuthService, private router: Router) {}
 
-  onGoogleSignIn(): void {}
-
-  onSubmit(): void {
-    // TODO: Add client-side validation 
-    this.authService.login(this.username, this.password);    
-    if (this.authService.checkLoginStatus())
-      this.router.navigate(['/dashboard']);
+  onGoogleSignIn(): void {
+    this.authService.signInWithGoogle();
   }
 }

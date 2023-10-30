@@ -1,4 +1,4 @@
-<div *ngIf="isLoggedIn; else loginTemplate">
+<div *ngIf="!displayLoginScreen; else loginTemplate">
   <app-sidenav 
     (onToggleSidenav)="onToggleSidenav($event)">
   </app-sidenav>

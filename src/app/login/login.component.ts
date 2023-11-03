@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FirebaseAuthService } from '../authentication/firebase-auth.service';
+import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { Router } from '@angular/router';
 
 @Component({

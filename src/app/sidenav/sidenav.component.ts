@@ -3,7 +3,7 @@ import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output } fro
 import { SideNavToggle } from '../utils/sidenav-toggle';
 import { navbarData } from './nav-data';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FirebaseAuthService } from '../authentication/firebase-auth.service';
+import { FirebaseAuthService } from '../services/firebase-auth.service';
 
 @Component({
   selector: 'app-sidenav',

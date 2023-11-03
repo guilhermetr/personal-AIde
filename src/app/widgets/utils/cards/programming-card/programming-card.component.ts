@@ -119,4 +119,8 @@ export class ProgrammingCardComponent implements OnInit {
     }, 2000);  // Simulating a delay of 2 seconds for the API response
   }
 
+  copyOutput(): void {
+    navigator.clipboard.writeText(this.codeOutput);
+  } 
+
 }

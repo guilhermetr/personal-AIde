@@ -4,7 +4,13 @@
         <select *ngIf="isProgrammingCardHeader" [(ngModel)]="selectedLanguage" (change)="updateSelectedLanguage(selectedLanguage)">
             <option *ngFor="let language of programmingLanguages" [value]="language">{{ language }}</option>
         </select>
-        <button (click)="toggleExpansion()" class="btn-expand">
+        <div class="btn-copy-wrapper">
+            <button class="btn-copy" title="Copy" (click)="onCopy()">
+                <i class="fa-solid fa-copy"></i>
+            </button>
+            <span class="copy-tooltip" *ngIf="showCopyTooltip">Copied!</span>
+        </div>
+        <button (click)="toggleExpansion()" class="btn-expand" [title]="isExpanded ? 'Collapse' : 'Expand'">
             <i class="fas fa-solid" 
                 [class.fa-up-right-and-down-left-from-center]="!isExpanded"
                 [class.fa-down-left-and-up-right-to-center]="isExpanded"></i>

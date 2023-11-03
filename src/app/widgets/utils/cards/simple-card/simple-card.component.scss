@@ -34,6 +34,8 @@ textarea {
     border-radius: 0 0 .5rem .5rem;
     caret-color: transparent;    
     background-color: var(--card-primary);
+    color: var(--text-secondary);
+    padding: 10px; 
 }
 
 textarea:focus {

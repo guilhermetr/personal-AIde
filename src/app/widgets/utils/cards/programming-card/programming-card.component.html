@@ -1,7 +1,8 @@
 <div class="card">
     <widgets-card-header 
         [headerText]="headerText" 
-        [isExpanded]="isExpanded" 
+        [isExpanded]="isExpanded"
+        (onCopy)="copyOutput()"
         (expansionToggled)="toggleExpansion()"
         [isProgrammingCardHeader]="true">
     </widgets-card-header>

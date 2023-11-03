@@ -1,12 +1,13 @@
 <div class="card">
     <widgets-card-header 
         [headerText]="headerText" 
-        [isExpanded]="isExpanded" 
+        [isExpanded]="isExpanded"
+        (copyRequested)="copyOutput()"
         (expansionToggled)="toggleExpansion()">
     </widgets-card-header>
     <div class="card-body text-input-area-container" 
         [ngClass]="{ 'expanded-card': isExpanded }">
-        <textarea readonly></textarea>
+        <textarea readonly [(ngModel)]="textOutput"></textarea>
         <widgets-loading-overlay [isLoading]="isLoading"></widgets-loading-overlay>
         <div class="text-input-area">
             <widgets-text-input 

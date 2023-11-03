@@ -68,7 +68,7 @@ export class SimpleCardComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe((result: any) => {
       this.textInput = result.textInput;
-      this.textOutput = result.codeOutput;
+      this.textOutput = result.textOutput;
       // setTimeout pushes the height adjustment to the end of the call stack, ensuring that the view is fully rendered
       setTimeout(() => {
         this.textInputComponent.adjustHeight();
@@ -87,11 +87,15 @@ export class SimpleCardComponent implements OnInit {
       this.isLoading = true;
 
       // Simulate API call delay using setTimeout
-      setTimeout(() => {
-          // Handle the logic of sending the input to the API here
-
-          this.isLoading = false;  // Set loading to false after getting the API response
-      }, 2000);  // Simulating a delay of 2 seconds for the API response
+      setTimeout(() => {          
+          this.isLoading = false;
+          // TODO: Set textOutput;
+          this.textInput = "";
+      }, 2000);
   }
+
+  copyOutput(): void {
+    navigator.clipboard.writeText(this.textOutput);
+  } 
 
 }

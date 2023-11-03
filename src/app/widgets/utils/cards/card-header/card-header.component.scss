@@ -9,6 +9,20 @@
     caret-color: transparent;
 }
 
+.btn-copy {
+    font-size: medium;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: var(--btn-primary);
+    outline: none;
+    margin-right: 0.8rem;
+}
+
+.btn-copy:hover {
+    color: var(--btn-hover);
+}
+
 .btn-expand {
     cursor: pointer;
     background-color: transparent;
@@ -32,3 +46,37 @@ select {
     outline: none;
     margin-right: 0.8rem;
 }
+
+/* 
+btn-copy-wrapper: This is a new div that acts as a wrapper around the copy button. Its primary purpose is to serve as a reference point for positioning the tooltip. 
+With the tooltip being an absolute positioned element, it needs a relative positioned parent to determine its position from. 
+The btn-copy-wrapper provides this relative positioning context.
+*/
+
+.btn-copy-wrapper {
+    position: relative;  /* Our tooltip will be positioned relative to this container */
+    display: inline-block;  /* Make it wrap around the button */
+}
+
+.copy-tooltip {
+    position: absolute;  /* Position it relative to the btn-copy-wrapper */
+    top: -22px;  /* Adjust this as per your requirements */
+    left: 30%;  /* Center the tooltip */
+    transform: translateX(-50%);  /* Adjust for perfect centering */
+    background-color: var(--card-secondary);
+    color: var(--text-primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;    
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeInOut 1.5s forwards;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+

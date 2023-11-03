@@ -86,11 +86,11 @@
     }
 
     .sidenav-nav-submenu:hover {
-        background-color: var(--sdnv-item-hover-primary) !important;
+        background-color: var(--item-hover-primary) !important;
     }
 
     .sidenav-nav-submenu-active {
-        background-color: var(--sdnv-item-active-primary);
+        background-color: var(--item-active-primary);
 
         .sidenav-link-icon,        
         .sidenav-link-caret {
@@ -113,7 +113,7 @@
 
     // Applies the background color to .sidenav-nav-submenu-item.active only when .sidenav-nav-submenu is not being hovered 
     .sidenav-nav-submenu:not(:hover) .sidenav-nav-submenu-item.active {
-        background-color: var(--sdnv-item-active-secondary);
+        background-color: var(--item-active-secondary);
     }
 
     .sidenav-nav-submenu-item.active {
@@ -123,7 +123,7 @@
     }
 
     .sidenav-nav-submenu-item:hover {
-        background-color: var(--sdnv-item-hover-secondary);        
+        background-color: var(--item-hover-secondary);        
 
         .sidenav-link-icon,        
         .sidenav-link-caret {
@@ -132,7 +132,7 @@
     }    
 
     .sidenav-nav-simple-item:hover {
-        background-color: var(--sdnv-item-hover-primary) !important;
+        background-color: var(--item-hover-primary) !important;
 
         .sidenav-link-icon {
             color: var(--btn-hover);
@@ -140,7 +140,7 @@
     }
 
     .sidenav-nav-simple-item.active {
-        background-color: var(--sdnv-item-active-primary);
+        background-color: var(--item-active-primary);
 
         .sidenav-link-icon {
             color: var(--btn-active);
@@ -155,7 +155,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    
     .btn-collapse {
         cursor: pointer;
         width: 2rem;
@@ -177,12 +177,86 @@
             color: var(--btn-hover);            
         }
     }
-    
-    .btn-theme {
+
+    .btn-settings {
         cursor: pointer;        
         height: 2rem;
         background-color: transparent;
         border: none;    
         margin: 10px;
-    }
+        margin-left: 20px;    
+        
+        .fa-cog {
+            color: var(--btn-primary);
+            font-size: 20px;
+        }
+
+        .fa-cog:hover {
+            color: var(--btn-hover);            
+        }
+    }    
+}
+
+.settings-popup {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 0;
+    width: 100%;
+    background: var(--item-active-secondary);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: .5rem .5rem 0 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        
+        .user-photo {
+            width: 30px;
+            height: 30px;
+            border-radius: 10%;
+            margin-right: 20px;
+            margin-left: 10px;
+        }
+    
+        .user-name {
+            font-weight: bold;
+            color: var(--text-primary); 
+        }
+    }    
+
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;                            
+
+        .btn-theme {
+            cursor: pointer;        
+            height: 2rem;
+            background-color: transparent;
+            border: none;    
+            margin-left: 10px;
+        }
+
+        .btn-signout {
+            cursor: pointer;        
+            height: 2rem;
+            background-color: transparent;
+            border: none;    
+            margin-right: 8px;
+
+            .fa-right-from-bracket {
+                color: var(--btn-primary);
+                font-size: 18px;
+            }
+
+            .fa-right-from-bracket:hover {
+                color: var(--btn-hover);
+            }
+        }
+    }                
 }

@@ -1,6 +1,3 @@
-@use '@angular/material' as mat;
-
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import '~@angular/cdk/overlay-prebuilt.css';
 
@@ -47,11 +44,7 @@ body {
     --text-secondary: rgb(60,60,60);
     
     /* Sidenav */
-    --sdnv-primary: rgb(239, 239, 239);
-    --sdnv-item-active-primary: rgb(228,230,241);
-    --sdnv-item-active-secondary: rgb(187, 188, 190);
-    --sdnv-item-hover-primary: rgb(242,242,242);
-    --sdnv-item-hover-secondary: rgb(250, 250, 250);
+    --sdnv-primary: rgb(239, 239, 239);    
 
     /* Button */
     --btn-primary: rgb(94,94,94);
@@ -66,6 +59,10 @@ body {
     /* General */
     --background: #fff;    
     --box-shadow: #b6bdcd;
+    --item-active-primary: rgb(228,230,241);
+    --item-active-secondary: rgb(187, 188, 190);
+    --item-hover-primary: rgb(242,242,242);
+    --item-hover-secondary: rgb(250, 250, 250);
 }
 
 body.dark-theme {
@@ -74,11 +71,7 @@ body.dark-theme {
     --text-secondary: rgb(176,179,184);
     
     /* Sidenav */
-    --sdnv-primary: rgb(24,24,24);
-    --sdnv-item-active-primary: rgb(35,35,35);
-    --sdnv-item-active-secondary: rgb(45,45,45);
-    --sdnv-item-hover-primary: rgb(42,45,46);
-    --sdnv-item-hover-secondary: rgb(62, 64, 64);
+    --sdnv-primary: rgb(24,24,24);    
 
     /* Button */
     --btn-primary: rgb(100, 100, 100);
@@ -93,4 +86,8 @@ body.dark-theme {
     /* General */
     --background: rgb(45,45,45);    
     --box-shadow: #0b0b0b;
+    --item-active-primary: rgb(35,35,35);
+    --item-active-secondary: rgb(45,45,45);
+    --item-hover-primary: rgb(42,45,46);
+    --item-hover-secondary: rgb(62, 64, 64);
 }

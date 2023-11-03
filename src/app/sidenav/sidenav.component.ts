@@ -3,6 +3,7 @@ import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output } fro
 import { SideNavToggle } from '../utils/sidenav-toggle';
 import { navbarData } from './nav-data';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FirebaseAuthService } from '../authentication/firebase-auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -18,7 +19,7 @@ import { Router, ActivatedRoute } from '@angular/router';
       ]),
       transition(':leave', [
         style({opacity: 1}),
-        animate('100ms',
+        animate('150ms',
           style({opacity: 0})
         )
       ])
@@ -52,18 +53,20 @@ import { Router, ActivatedRoute } from '@angular/router';
       transition('down <=> up', [
         animate('250ms ease-in-out')
       ])
-    ])
+    ]),
   ]
 })
 export class SidenavComponent implements OnInit {
 
   @Output() onToggleSidenav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
+  settingsOpen = false;
   submenuCollapsed: { [key: string]: boolean } = {} // Indicates if submenus are collapsed
   screenWidth = 0;
   navData = navbarData
+  user!: firebase.default.User;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: FirebaseAuthService) { }
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
@@ -71,7 +74,12 @@ export class SidenavComponent implements OnInit {
       if (data.children) {
         this.submenuCollapsed[data.label] = true;
       }
-    });    
+    });
+    this.authService.currentUser$.subscribe(user => {
+      if (user) {
+        this.user = user;
+      }
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -112,6 +120,14 @@ export class SidenavComponent implements OnInit {
         }
     }
     return isActive;
+  }
+
+  toggleSettings() {
+    this.settingsOpen = !this.settingsOpen;
+  }
+
+  signOut() {
+    this.authService.signOut();
   }
 
 }

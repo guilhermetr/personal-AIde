@@ -1,0 +1,152 @@
+.select-widget-container {
+  width: 45vw;
+  height: 55vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-primary);
+}
+
+// SEARCH & CATEGORIES FILTER
+
+h2 {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: var(--text-primary)
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;  
+  margin-top: 10px;  
+}
+
+.search,
+.category-filter {
+  flex: 1;
+  color: var(--text-secondary);
+}
+
+input {
+  padding-left: 5px;
+}
+
+::ng-deep .mat-mdc-select-panel {
+  background-color: var(--card-secondary) !important; 
+  color: var(--text-primary);  
+  transition: all .25s ease;
+}
+
+.custom-option:hover {    
+  background-color: var(--item-hover-secondary) !important;  
+}
+
+// WIDGETS LIST
+
+.widgets-list-container {
+  overflow: auto;
+  flex-grow: 1;
+  overflow-x: hidden;
+}
+
+.widget-info {  
+  margin-top: 5px;
+  margin-bottom: 5px;  
+  padding: 10px;
+  cursor: pointer;
+
+  h4 {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--text-primary);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+}
+
+.widget-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  transition: all .25s ease;
+}
+
+.widget-row:hover {
+  background-color: var(--item-hover-primary);
+}
+
+.checkbox {
+  color: var(--text-secondary); 
+}
+
+// SCROLLBAR
+
+/* WebKit browsers (e.g., Chrome, Safari) */
+.widgets-list-container::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+
+.widgets-list-container::-webkit-scrollbar-track {
+  background: var(--card-secondary); /* color of the track */
+  border-radius: 4px;
+}
+
+.widgets-list-container::-webkit-scrollbar-thumb {
+  background-color: var(--text-primary); /* color of the scroll thumb */
+  border-radius: 4px;
+  border: 2px solid transparent; /* 2px border for thumb, but with a transparent color */
+  background-clip: content-box; /* this will create the effect of space between thumb and track */
+}
+
+.widgets-list-container::-webkit-scrollbar-button {
+  display: none; /* hides the buttons on the scrollbar (up and down arrows) */
+}
+
+/* Firefox */
+.widgets-list-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-primary) var(--card-secondary);
+}
+
+// ACTIONS
+
+.btn-add-container {
+  text-align: right;
+  background-color: var(--card-secondary);
+}
+
+/* select-widget-dialog.component.scss */
+
+.btn-add {
+  padding: 8px 15px; // Reduced padding for a more compact look
+  background-color: var(--btn-bg-primary); // Example background color, adjust as needed
+  color: white; // Text color
+  border: none; // No border
+  border-radius: 3px; // Slightly rounded corners for a compact feel
+  cursor: pointer; // Pointer cursor on hover
+  font-weight: bold; // Bold text
+  font-size: 14px; // Smaller font size for a more compact look
+  transition: filter 0.25s;
+  margin: 10px;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:focus {
+    outline: none; // Remove outline on focus for a clean look
+  }
+
+  // You can also add responsiveness or disable effects
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}

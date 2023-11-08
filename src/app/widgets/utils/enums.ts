@@ -13,3 +13,8 @@ export enum ProgrammingLanguage {
     Rust = 'Rust',
     TypeScript = 'TypeScript',
 }
+
+export enum CardType {
+    Simple,
+    Programming,
+}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { SideNavToggle } from './utils/sidenav-toggle';
 import { Router } from '@angular/router';
-import { ThemeService } from './theme/theme.service';
-import { FirebaseAuthService } from './services/firebase-auth.service';
+import { ThemeService } from './services/theme/theme.service';
+import { FirebaseAuthService } from './services/authentication/firebase-auth.service';
 
 @Component({
   selector: 'app-root',

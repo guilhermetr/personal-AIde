@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    align-items: baseline;
+}
+
+h1 {
+    margin-bottom: 3rem;
+}
+
+h3 {    
+    color: var(--text-secondary)
+}
+
+.btn-add {
+    cursor: pointer;        
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;    
+    
+    .fa-circle-plus {
+        color: var(--btn-primary);
+        font-size: 30px;
+    }
+
+    .fa-circle-plus:hover {
+        color: var(--btn-hover);            
+    }
+
+    .fa-pen-to-square {
+        color: var(--btn-primary);
+        font-size: 25px;
+    }
+
+    .fa-pen-to-square:hover {
+        color: var(--btn-hover);            
+    }
+}

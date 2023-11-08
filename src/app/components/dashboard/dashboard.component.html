@@ -1,0 +1,9 @@
+<div class="header">
+    <h1>Dashboard</h1>
+    <button class="btn-add" (click)="openWidgetDialog()" 
+        [attr.title]="selectedWidgets.length > 0 ? 'Edit Widgets' : 'Add Widgets'">
+        <i class="fa-solid" [class]="selectedWidgets.length > 0 ? 'fa-pen-to-square' : 'fa-circle-plus'"></i>
+    </button>
+</div>
+<h3 *ngIf="widgetComponents.length === 0">Press the '+' button to add widgets</h3>
+<app-grid *ngIf="widgetComponents.length > 0" [componentsConfig]="widgetComponents"></app-grid>

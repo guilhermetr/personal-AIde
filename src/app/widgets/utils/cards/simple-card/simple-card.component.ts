@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit, Optional, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TextInputComponent } from '../../input/text-input/text-input.component';
 
 // A simple container for widgets with a header and an input area
@@ -13,7 +13,7 @@ export class SimpleCardComponent implements OnInit {
 
   dialogRef!: MatDialogRef<SimpleCardComponent>
 
-  @Input() headerText: string = "";  
+  @Input() title: string = "";  
   cardBodyHeight: number = 300;
   textInput: string = "";
   textOutput: string = "";
@@ -27,13 +27,14 @@ export class SimpleCardComponent implements OnInit {
   // This is used when the simple-card-component is opened as a dialog (when it's expanded).
   constructor(
     public dialog: MatDialog, 
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit(): void {
+    // Config dialog (expanded card)
     const isDialog = this.dialogRef != undefined;
     if (isDialog) {
-      this.headerText = this.data.headerText;
+      this.title = this.data.headerText;
       this.isExpanded = this.data.isExpanded;
       this.textInput = this.data.textInput;
       this.textOutput = this.data.textOutput;
@@ -54,10 +55,9 @@ export class SimpleCardComponent implements OnInit {
   openDialog(): void {
     const dialogConfig = new MatDialogConfig();
 
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      headerText: this.headerText,
+      headerText: this.title,
       isExpanded: true,
       textInput: this.textInput,
       textOutput: this.textOutput,

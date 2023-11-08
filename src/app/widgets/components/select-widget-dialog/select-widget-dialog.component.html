@@ -1,0 +1,33 @@
+<div class="select-widget-container">
+  <h2>Select Widgets</h2>
+
+  <div class="filters">
+    <mat-form-field class="search">      
+      <input matInput placeholder="Type to search..." (input)="applyFilter($event)">
+    </mat-form-field>
+
+    <mat-form-field class="category-filter">      
+      <mat-select (selectionChange)="filterByCategory($event.value)" [(value)]="defaultCategory">
+        <mat-option *ngFor="let category of categories" [value]="category" class="custom-option">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="widgets-list-container">
+    <div class="widget-row" *ngFor="let widget of filteredWidgets; let i = index"
+         (click)="onSelectWidget(widget)">
+      <div class="widget-info">
+        <h4>{{ widget.name }}</h4>
+        <p>{{ widget.description }}</p>
+      </div>
+      <mat-checkbox class="checkbox" [checked]="selectedWidgets.get(widget.name)"></mat-checkbox>
+    </div>
+  </div>
+  
+
+  <div class="btn-add-container">
+    <button (click)="closeDialog()" class="btn-add">Update Widgets</button>
+  </div>
+</div>

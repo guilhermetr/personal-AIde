@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TextInputComponent } from '../../input/text-input/text-input.component';
 import { CodeEditorComponent } from '../../input/code-editor/code-editor.component';
 
@@ -14,7 +14,7 @@ export class ProgrammingCardComponent implements OnInit {
   dialogRef!: MatDialogRef<ProgrammingCardComponent>
   isDialog!: boolean;
   
-  @Input() headerText: string = "";  
+  @Input() title: string = "";  
   cardBodyHeight: number = 300;
   expandedCardBodyHeight: string = '88vh'
   codeEditorHeight!: number;
@@ -40,7 +40,7 @@ export class ProgrammingCardComponent implements OnInit {
   ngOnInit(): void {
     this.isDialog = this.dialogRef != undefined;
     if (this.isDialog) {
-      this.headerText = this.data.headerText;
+      this.title = this.data.headerText;
       this.isExpanded = this.data.isExpanded;
       this.codeInput = this.data.codeInput;
       this.codeOutput = this.data.codeOutput;
@@ -65,7 +65,7 @@ export class ProgrammingCardComponent implements OnInit {
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      headerText: this.headerText,
+      headerText: this.title,
       isExpanded: true,
       codeInput: this.codeInput,
       codeOutput: this.codeOutput,

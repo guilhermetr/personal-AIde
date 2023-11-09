@@ -6,35 +6,35 @@
     width: 16rem;
     height: 100vh;
     box-shadow: 0.063rem 0 1.25rem 0 var(--box-shadow);
-    transition: all .5s ease;
+    transition: all .5s ease;    
+}
 
-    .logo-container {
-        display: flex;
-        align-items: center;
-        padding: 0.938rem 0.938rem 0 0.938rem;
-        width: 100%;
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 0.938rem 0.938rem 0 0.938rem;
+    width: 100%;            
+}
 
-        .logo {
-            background: #fff;
-            text-align: center;
-            width: 3rem;
-            min-width: 3rem;
-            border-radius: 0.313rem;
-            padding: 0.313rem;
-            font-size: 24px;
-            font-weight: 900;
-            cursor: pointer;
-            border: none;
-        }
+.logo {
+    background: #fff;
+    text-align: center;
+    width: 3rem;
+    min-width: 3rem;
+    border-radius: 0.313rem;
+    padding: 0.313rem;
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+}
 
 
-        .logo-text {
-            margin-left: 1.5rem;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }        
-    }
+.logo-text {
+    margin-left: 1.5rem;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 .sidenav-collapsed {
@@ -47,104 +47,104 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
+    cursor: pointer;    
+}
 
-    .sidenav-nav-item {
-        width: 100%;
-        margin-bottom: 0.25rem;        
-        border-radius: 0.625rem;
-        transition: none;
+.sidenav-nav-item {
+    width: 100%;
+    margin-bottom: 0.25rem;        
+    border-radius: 0.625rem;
+    transition: none;    
+}
 
-        .sidenav-nav-link {
-            display: flex;
-            align-items: center;            
-            height: 3rem;
-            text-decoration: none;            
-            transition: none;
-            color: var(--btn-primary);
-            caret-color: transparent;
+.sidenav-nav-link {
+    display: flex;
+    align-items: center;            
+    height: 3rem;
+    text-decoration: none;            
+    transition: none;
+    color: var(--btn-primary);
+    caret-color: transparent;    
+}
 
-            .sidenav-link-icon {
-                font-size: 22px;
-                width: 2rem;
-                min-width: 2rem;
-                margin: 0 0.5rem;
-                text-align: center;                
-            }
+.sidenav-link-icon {
+    font-size: 22px;
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 0.5rem;
+    text-align: center;                
+}
 
-            .sidenav-link-text {
-                margin-left: 0.2rem;
-                color: var(--text-primary)
-            }
+.sidenav-link-text {
+    margin-left: 0.2rem;
+    color: var(--text-primary)
+}
 
-            .sidenav-link-caret {
-                font-size: 22px;
-                margin-left: auto;
-                margin-right: 0.75rem;                
-            }
-        }
+.sidenav-link-caret {
+    font-size: 22px;
+    margin-left: auto;
+    margin-right: 0.75rem;                
+}
+
+.sidenav-nav-submenu:hover {
+    background-color: var(--item-hover-primary) !important;
+}
+
+.sidenav-nav-submenu-active {
+    background-color: var(--item-active-primary);
+
+    .sidenav-link-icon,        
+    .sidenav-link-caret {
+        color: var(--btn-hover);
     }
+}
 
-    .sidenav-nav-submenu:hover {
-        background-color: var(--item-hover-primary) !important;
+.sidenav-nav-submenu-items {
+    list-style: none;
+    overflow: hidden;
+}
+
+.sidenav-nav-submenu-item {
+    border-radius: 0.625rem;
+
+    .sidenav-link-icon {
+        color: var(--btn-primary);
     }
+}
 
-    .sidenav-nav-submenu-active {
-        background-color: var(--item-active-primary);
+// Applies the background color to .sidenav-nav-submenu-item.active only when .sidenav-nav-submenu is not being hovered 
+.sidenav-nav-submenu:not(:hover) .sidenav-nav-submenu-item.active {
+    background-color: var(--item-active-secondary);
+}
 
-        .sidenav-link-icon,        
-        .sidenav-link-caret {
-            color: var(--btn-hover);
-        }
+.sidenav-nav-submenu-item.active {
+    .sidenav-link-icon {
+        color: var(--btn-active);
     }
+}
 
-    .sidenav-nav-submenu-items {
-        list-style: none;
-        overflow: hidden;
+.sidenav-nav-submenu-item:hover {
+    background-color: var(--item-hover-secondary);        
+
+    .sidenav-link-icon,        
+    .sidenav-link-caret {
+        color: var(--btn-hover);
     }
+}    
 
-    .sidenav-nav-submenu-item {
-        border-radius: 0.625rem;
+.sidenav-nav-simple-item:hover {
+    background-color: var(--item-hover-primary) !important;
 
-        .sidenav-link-icon {
-            color: var(--btn-primary);
-        }
+    .sidenav-link-icon {
+        color: var(--btn-hover);
     }
+}
 
-    // Applies the background color to .sidenav-nav-submenu-item.active only when .sidenav-nav-submenu is not being hovered 
-    .sidenav-nav-submenu:not(:hover) .sidenav-nav-submenu-item.active {
-        background-color: var(--item-active-secondary);
-    }
+.sidenav-nav-simple-item.active {
+    background-color: var(--item-active-primary);
 
-    .sidenav-nav-submenu-item.active {
-        .sidenav-link-icon {
-            color: var(--btn-active);
-        }
-    }
-
-    .sidenav-nav-submenu-item:hover {
-        background-color: var(--item-hover-secondary);        
-
-        .sidenav-link-icon,        
-        .sidenav-link-caret {
-            color: var(--btn-hover);
-        }
-    }    
-
-    .sidenav-nav-simple-item:hover {
-        background-color: var(--item-hover-primary) !important;
-
-        .sidenav-link-icon {
-            color: var(--btn-hover);
-        }
-    }
-
-    .sidenav-nav-simple-item.active {
-        background-color: var(--item-active-primary);
-
-        .sidenav-link-icon {
-            color: var(--btn-active);
-        }
+    .sidenav-link-icon {
+        color: var(--btn-active);
     }
 }
 
@@ -155,46 +155,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.btn-collapse {
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.fa-arrow-left {
+    color: var(--btn-primary);
+    font-size: 18px;
     
-    .btn-collapse {
-        cursor: pointer;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background-color: transparent;
-        border: none;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin: 10px;
-        
-        .fa-arrow-left {
-            color: var(--btn-primary);
-            font-size: 18px;
-        }
-
-        .fa-arrow-left:hover {
-            color: var(--btn-hover);            
-        }
+    &:hover {
+        color: var(--btn-hover);
     }
+}
 
-    .btn-settings {
-        cursor: pointer;        
-        height: 2rem;
-        background-color: transparent;
-        border: none;    
-        margin: 10px;
-        margin-left: 20px;    
-        
-        .fa-cog {
-            color: var(--btn-primary);
-            font-size: 20px;
-        }
+.btn-settings {
+    cursor: pointer;        
+    height: 2rem;
+    background-color: transparent;
+    border: none;    
+    margin: 10px;
+    margin-left: 20px; 
+}
 
-        .fa-cog:hover {
-            color: var(--btn-hover);            
-        }
-    }    
+.fa-cog {
+    color: var(--btn-primary);
+    font-size: 20px;
+
+    &:hover {
+        color: var(--btn-hover);
+    }
 }
 
 .settings-popup {
@@ -209,54 +209,54 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
 
-    .user-info {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-        
-        .user-photo {
-            width: 30px;
-            height: 30px;
-            border-radius: 10%;
-            margin-right: 20px;
-            margin-left: 10px;
-        }
-    
-        .user-name {
-            font-weight: bold;
-            color: var(--text-primary); 
-        }
-    }    
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
-    .button-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;                            
+.user-photo {
+    width: 30px;
+    height: 30px;
+    border-radius: 10%;
+    margin-right: 20px;
+    margin-left: 10px;
+}
 
-        .btn-theme {
-            cursor: pointer;        
-            height: 2rem;
-            background-color: transparent;
-            border: none;    
-            margin-left: 10px;
-        }
+.user-name {
+    font-weight: bold;
+    color: var(--text-primary); 
+}
 
-        .btn-signout {
-            cursor: pointer;        
-            height: 2rem;
-            background-color: transparent;
-            border: none;    
-            margin-right: 8px;
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-            .fa-right-from-bracket {
-                color: var(--btn-primary);
-                font-size: 18px;
-            }
+.btn-theme {
+    cursor: pointer;        
+    height: 2rem;
+    background-color: transparent;
+    border: none;    
+    margin-left: 10px;
+}
 
-            .fa-right-from-bracket:hover {
-                color: var(--btn-hover);
-            }
-        }
-    }                
+.btn-signout {
+    cursor: pointer;        
+    height: 2rem;
+    background-color: transparent;
+    border: none;    
+    margin-right: 8px;      
+}
+
+.fa-right-from-bracket {
+    color: var(--btn-primary);
+    font-size: 18px;
+
+    &:hover {
+        color: var(--btn-hover);
+    }
 }

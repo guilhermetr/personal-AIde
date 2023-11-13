@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ProgrammingLanguage } from '../../enums';
+import { ProgrammingLanguage } from '../../../utils/enums';
 import { ProgrammingService } from '../programming-card/programming-card.service';
 
 @Component({

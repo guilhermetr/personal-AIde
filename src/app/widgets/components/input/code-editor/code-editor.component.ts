@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { NuMonacoEditorModel } from '@ng-util/monaco-editor';
-import { ProgrammingLanguage } from '../../enums';
+import { ProgrammingLanguage } from '../../../utils/enums';
 import { ProgrammingService } from '../../cards/programming-card/programming-card.service';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 import { Theme } from 'src/app/utils/theme';

@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  firebaseConfig: {}
 };
+
+export const CLOUD_FUNCTION_URL = '';

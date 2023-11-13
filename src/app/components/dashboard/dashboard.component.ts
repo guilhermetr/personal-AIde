@@ -33,12 +33,14 @@ export class DashboardComponent implements OnInit {
 
   updateWidgets(selectedWidgets: Widget[]): void {
     this.selectedWidgets = selectedWidgets;
-    this.widgetComponents = selectedWidgets.map((widget: Widget): DynamicComponentConfig => ({
-      component: this.widgetService.getWidgetComponent(widget.cardType)!,
-      inputs: {
-        title: widget.name
+    this.widgetComponents = selectedWidgets.map((widget: Widget): DynamicComponentConfig => new DynamicComponentConfig(
+      widget.id,
+      this.widgetService.getWidgetComponent(widget.cardType)!,
+      {
+        title: widget.name,
+        taskType: widget.taskType,
       }
-    }));
+    ));
   }
 
 }

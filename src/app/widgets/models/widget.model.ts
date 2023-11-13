@@ -1,19 +1,23 @@
+import { generateUUID } from "src/app/utils/functions";
 import { CardType } from "../utils/enums";
+import { TaskType } from 'src/app/utils/enums';
 
 export class Widget {
-  id?: number;
+  id: string;
   name: string;
   categoryId: number;
   description: string;
   cardType: CardType; // Specifies which card should be used when creating this widget's component
   isCustom?: boolean;
+  taskType: TaskType;
 
-  constructor(name: string, categoryId: number, description: string, cardType: CardType, id?: number, isCustom: boolean = false) {
-    if (id) this.id = id;
+  constructor(name: string, categoryId: number, description: string, cardType: CardType, taskType: TaskType, isCustom: boolean = false) {
+    this.id = generateUUID();
     this.name = name;
     this.categoryId = categoryId;
     this.description = description;
     this.cardType = cardType;
+    this.taskType = taskType;
     this.isCustom = isCustom;
   }
 }

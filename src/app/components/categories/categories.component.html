@@ -1,2 +1,2 @@
-<h1>{{ selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1) }}</h1>
-<app-grid [componentsConfig]="categories[selectedCategory]"></app-grid>
+<h1>{{ selectedCategory }}</h1>
+<app-grid [componentsConfig]="categoryWidgetsComponentConfig.get(selectedCategory)!"></app-grid>

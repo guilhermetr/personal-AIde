@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Category } from '../models/category.model';
+import { DynamicComponentConfig } from 'src/app/models/dynamic-component-config.model';
+import { Widget } from '../models/widget.model';
+import { WidgetService } from './widget.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ export class CategoryService {
   private defaultCategories!: Category[];
   private categoriesUrl = 'api/categories'; // URL to web API for custom categories
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private widgetService: WidgetService) {
     this.defaultCategories = this.createDefaultCategories();
   }
     
@@ -61,6 +64,29 @@ export class CategoryService {
     return this.http.delete<Category>(url).pipe(
       catchError(this.handleError<Category>('deleteCustomCategory'))
     );
+  }
+  
+  // Creates a mapping between category names and arrays of dynamic component configurations using the default Widgets
+  getComponentsConfigForCategories(): Map<string, DynamicComponentConfig[]> {
+    var map = new Map<string, DynamicComponentConfig[]>();
+    const widgets = this.widgetService.getDefaultWidgets();
+
+    this.defaultCategories.forEach((category: Category) => {
+      const categoryWidgetsComponentConfig = widgets
+        .filter((widget: Widget) => widget.categoryId == category.id)
+        .map((widget: Widget): DynamicComponentConfig => new DynamicComponentConfig(
+          widget.id,
+          this.widgetService.getWidgetComponent(widget.cardType)!,
+          {
+            title: widget.name,
+            taskType: widget.taskType
+          }
+        ));
+
+      map.set(category.name, categoryWidgetsComponentConfig);
+    })
+
+    return map;
   }
   
   private handleError<T>(operation = 'operation', result?: T) {

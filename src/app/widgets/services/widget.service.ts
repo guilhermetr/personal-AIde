@@ -4,8 +4,9 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Widget } from '../models/widget.model';
 import { CardType } from '../utils/enums';
-import { SimpleCardComponent } from '../utils/cards/simple-card/simple-card.component';
-import { ProgrammingCardComponent } from '../utils/cards/programming-card/programming-card.component';
+import { SimpleCardComponent } from '../components/cards/simple-card/simple-card.component';
+import { ProgrammingCardComponent } from '../components/cards/programming-card/programming-card.component';
+import { TaskType } from 'src/app/utils/enums';
 
 @Injectable({
   providedIn: 'root'
@@ -15,18 +16,19 @@ export class WidgetService {
     // TODO: Find a better way of assigning categories here
 
     // Writing Widgets
-    new Widget('Summarizer', 1, 'Condenses content into a brief summary highlighting key points.', CardType.Simple),
-    new Widget('Formalizer', 1, 'Converts casual language to a more formal tone suitable for professional contexts.', CardType.Simple),
-    new Widget('Translator', 1, 'Translates text into multiple languages with context-aware precision.', CardType.Simple),
-    new Widget('Grammar Corrector', 1, 'Scans text to identify and correct grammatical errors.', CardType.Simple),
-    new Widget('Style Enhancer', 1, 'Analyzes and provides suggestions to improve the style and clarity of writing.', CardType.Simple),
+    new Widget('Summarizer', 1, 'Condense content into a brief summary highlighting key points.', CardType.Simple, TaskType.Summarizer),
+    new Widget('Formalizer', 1, 'Convert casual language to a more formal tone suitable for professional contexts.', CardType.Simple, TaskType.Formalizer),    
+    new Widget('Grammar Corrector', 1, 'Identify and correct grammatical errors.', CardType.Simple, TaskType.GrammarCorrector),    
+    new Widget('Paraphraser', 1, 'Rewrite sentences or paragraphs using different words while keeping the original meaning intact.', CardType.Simple, TaskType.Paraphraser),
+    new Widget('Simplifier', 1, 'Simplify complex text to make it accessible to a wider audience or for educational purposes.', CardType.Simple, TaskType.Simplifier),
   
     // Programming Widgets
-    new Widget('Code Cleaner', 2, 'Formats and cleans up source code for better readability and maintenance.', CardType.Programming),
-    new Widget('Bug Predictor', 2, 'Predicts potential bugs in code using historical data and pattern recognition.', CardType.Programming),
-    new Widget('Code Autocompleter', 2, 'Offers real-time code completion suggestions to expedite coding tasks.', CardType.Programming),
-    new Widget('Refactoring Assistant', 2, 'Suggests code refactoring for improved efficiency and readability.', CardType.Programming),
-    new Widget('Security Auditor', 2, 'Scans code to detect and suggest fixes for potential security vulnerabilities.', CardType.Programming),
+    new Widget('Refactoring Assistant', 2, 'Get code refactoring suggestions for improved efficiency and readability.', CardType.Programming, TaskType.RefactoringAssistant),
+    new Widget('Code Cleaner', 2, 'Format and clean up code for better readability and maintenance.', CardType.Programming, TaskType.CodeCleaner),
+    new Widget('Unit Test Generator', 2, 'Generate unit test cases.', CardType.Programming, TaskType.UnitTestingGenerator),
+    new Widget('Documentation Builder', 2, 'Generate basic documentation, including function/method descriptions, parameter explanations, and return values.', CardType.Programming, TaskType.DocumentationBuilder),
+    new Widget('Complexity Analyzer', 2, 'Evaluate code complexity and get suggestions to simplify it.', CardType.Programming, TaskType.ComplexityAnalyzer),
+    new Widget('Best Practices Validator', 2, 'Review code against industry best practices and get recommendations for aligning with standard coding conventions.', CardType.Programming, TaskType.BestPracticesValidator),
   ];
 
   // Used for retrieving which card component should be rendered for a given Widget

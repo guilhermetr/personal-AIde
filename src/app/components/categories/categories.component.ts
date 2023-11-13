@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CodeCleanerComponent } from 'src/app/widgets/components/programming/code-cleaner/code-cleaner.component';
-import { FormalizerComponent } from 'src/app/widgets/components/writing/formalizer/formalizer.component';
-import { SummarizerComponent } from 'src/app/widgets/components/writing/summarizer/summarizer.component';
-import { TranslatorComponent } from 'src/app/widgets/components/writing/translator/translator.component';
+import { DynamicComponentConfig } from 'src/app/models/dynamic-component-config.model';
+import { ProgrammingCardComponent } from 'src/app/widgets/components/cards/programming-card/programming-card.component';
+import { SimpleCardComponent } from 'src/app/widgets/components/cards/simple-card/simple-card.component';
+import { Category } from 'src/app/widgets/models/category.model';
+import { Widget } from 'src/app/widgets/models/widget.model';
+import { CategoryService } from 'src/app/widgets/services/category.service';
+import { WidgetService } from 'src/app/widgets/services/widget.service';
 
 @Component({
   selector: 'app-categories',
@@ -11,25 +14,20 @@ import { TranslatorComponent } from 'src/app/widgets/components/writing/translat
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-
+  
   selectedCategory: string = "";
-  categories: { [key: string]: any[]}  = { // TODO: Use the categories service
-    programming: [
-      { component: CodeCleanerComponent }
-    ],
-    writing: [
-      { component: SummarizerComponent },
-      { component: TranslatorComponent },
-      { component: FormalizerComponent },
-    ]
-  };
+  categoryWidgetsComponentConfig!: Map<string, DynamicComponentConfig[]>;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private categoryService: CategoryService    
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {        
+    this.categoryWidgetsComponentConfig = this.categoryService.getComponentsConfigForCategories();
+
     this.route.params.subscribe(params => {
-      this.selectedCategory = params['categoryName'];
+      this.selectedCategory = params['categoryName'].charAt(0).toUpperCase() + params['categoryName'].slice(1);
     });
   }
-
 }

@@ -130,4 +130,7 @@ export class SidenavComponent implements OnInit {
     this.authService.signOut();
   }
 
+  signIn() {
+    this.router.navigate(['/login']);
+  }
 }

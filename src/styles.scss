@@ -99,6 +99,14 @@ body.dark-theme {
     font-size: 1rem;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     border-radius: .5rem;
+
+    button {
+        background-color: #891b1b;
+
+        &:hover {
+            background-color: #7f1818;
+        }
+    }
 }
 
 // SCROLLBAR

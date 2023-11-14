@@ -48,14 +48,14 @@
         
         <!-- Settings Popup -->
         <div *ngIf="settingsOpen && !collapsed" class="settings-popup" @fadeInOut>
-            <div class="user-info">
+            <div *ngIf="user" class="user-info">
                 <img class="user-photo" [src]="user.photoURL" alt="User Photo">
                 <span class="user-name">{{ user.displayName }}</span>
             </div>
             <div class="button-container">
                 <app-theme-toggle *ngIf="!collapsed" class="btn-theme"/>
-                <button class="btn-signout" (click)="signOut()" title="Sign Out">
-                    <i class="fa-solid fa-right-from-bracket"></i>
+                <button class="btn-auth" (click)="user ? signOut() : signIn()" [title]="user ? 'Sign Out' : 'Sign In'">
+                    <i class="fa-solid" [ngClass]="user ? 'fa-right-from-bracket' : 'fa-right-to-bracket'"></i>
                 </button>
             </div>
         </div>

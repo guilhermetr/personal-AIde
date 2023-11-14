@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SideNavToggle } from './utils/sidenav-toggle';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { ThemeService } from './services/theme/theme.service';
 import { FirebaseAuthService } from './services/authentication/firebase-auth.service';
 
@@ -10,18 +10,17 @@ import { FirebaseAuthService } from './services/authentication/firebase-auth.ser
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  displayLoginScreen!: boolean;
+  displayLoginScreen: boolean = true;
   isSidenavCollapsed: boolean = false;
   screenWidth = window.innerWidth;
 
-  constructor(private router: Router, private themeService: ThemeService, private authService: FirebaseAuthService) { }
+  constructor(private router: Router, private themeService: ThemeService) { }
 
   ngOnInit(): void {        
-    this.authService.currentUser$.subscribe(user => {
-      if (user)
-        this.displayLoginScreen = false;
-      else
-        this.displayLoginScreen = true;
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.displayLoginScreen = event.url === '/login';
+      }
     });
     this.themeService.initialize();
   }

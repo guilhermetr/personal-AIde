@@ -10,6 +10,7 @@ import { GridComponent } from './components/grid/grid.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule, Routes } from '@angular/router';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -20,10 +21,9 @@ import { NuMonacoEditorModule } from '@ng-util/monaco-editor';
 import { LoginComponent } from './components/login/login.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
+import { AngularFireAuthGuard, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
 import { environment } from '../environments/environment';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToDashboard = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
@@ -35,17 +35,13 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AngularFireAuthGuard], 
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    component: DashboardComponent,    
   },
   {
     path: 'categories',
     children: [
       { path: ':categoryName', component: CategoriesComponent }
-    ],
-    canActivate: [AngularFireAuthGuard], 
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    ],    
   },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/dashboard' }
@@ -72,6 +68,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatToolbarModule,
     MatDialogModule,
+    MatSnackBarModule,
     NuMonacoEditorModule.forRoot(), // use forRoot() in main app module only.
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,

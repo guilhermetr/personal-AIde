@@ -77,7 +77,8 @@
 
 .sidenav-link-text {
     margin-left: 0.2rem;
-    color: var(--text-primary)
+    color: var(--text-primary);
+    transition: none; 
 }
 
 .sidenav-link-caret {
@@ -118,33 +119,39 @@
 }
 
 .sidenav-nav-submenu-item.active {
+    .sidenav-link-text,
     .sidenav-link-icon {
-        color: var(--btn-active);
+        color: var(--text-active) !important;
+        font-weight: bold;
     }
 }
 
 .sidenav-nav-submenu-item:hover {
-    background-color: var(--item-hover-secondary);        
+    background-color: var(--item-hover-secondary);
 
+    .sidenav-link-text,
     .sidenav-link-icon,        
     .sidenav-link-caret {
-        color: var(--btn-hover);
+        color: var(--text-hover);
     }
 }    
 
 .sidenav-nav-simple-item:hover {
-    background-color: var(--item-hover-primary) !important;
+    background-color: var(--item-hover-primary) !important;    
 
+    .sidenav-link-text,
     .sidenav-link-icon {
-        color: var(--btn-hover);
+        color: var(--text-hover);
     }
 }
 
 .sidenav-nav-simple-item.active {
     background-color: var(--item-active-primary);
 
+    .sidenav-link-text,
     .sidenav-link-icon {
-        color: var(--btn-active);
+        color: var(--text-active);
+        font-weight: bold;
     }
 }
 

@@ -92,6 +92,15 @@ body.dark-theme {
     --item-hover-secondary: rgb(62, 64, 64);
 }
 
+.error-snackbar {
+    background-color: #9b1c1c; /* Dark red */
+    color: #fff; /* White */
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: .5rem;
+}
+
 // SCROLLBAR
 
 /* WebKit browsers */

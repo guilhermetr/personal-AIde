@@ -38,6 +38,7 @@ export class WidgetService {
   ]);  
   
   private widgetsUrl = 'api/widgets'; // URL to web API for custom widgets
+  selectedWidgets: Widget[] = [];
 
   constructor(private http: HttpClient) {
     this.defaultWidgets.forEach(widget => {

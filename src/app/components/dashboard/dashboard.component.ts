@@ -17,7 +17,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private widgetService: WidgetService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {    
+    this.updateWidgets(this.widgetService.selectedWidgets);
+  }
 
   openWidgetDialog(): void {
     const dialogConfig = new MatDialogConfig();
@@ -26,12 +28,13 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((widgets: Widget[]) => {
       if (widgets) {
+        this.widgetService.selectedWidgets = widgets;
         this.updateWidgets(widgets);
       }
     });
   }
 
-  updateWidgets(selectedWidgets: Widget[]): void {
+  updateWidgets(selectedWidgets: Widget[]): void {    
     this.selectedWidgets = selectedWidgets;
     this.widgetComponents = selectedWidgets.map((widget: Widget): DynamicComponentConfig => new DynamicComponentConfig(
       widget.id,

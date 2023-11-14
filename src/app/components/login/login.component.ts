@@ -9,7 +9,7 @@ import { FirebaseAuthService } from 'src/app/services/authentication/firebase-au
 })
 export class LoginComponent {
 
-  constructor(private authService: FirebaseAuthService, private router: Router) {}
+  constructor(private authService: FirebaseAuthService) {}
 
   onGoogleSignIn(): void {
     this.authService.signInWithGoogle();

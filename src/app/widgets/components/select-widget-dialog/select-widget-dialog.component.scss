@@ -86,35 +86,6 @@ input {
   color: var(--text-secondary); 
 }
 
-// SCROLLBAR
-
-/* WebKit browsers (e.g., Chrome, Safari) */
-.widgets-list-container::-webkit-scrollbar {
-  width: 8px; /* width of the entire scrollbar */
-}
-
-.widgets-list-container::-webkit-scrollbar-track {
-  background: var(--card-secondary); /* color of the track */
-  border-radius: 4px;
-}
-
-.widgets-list-container::-webkit-scrollbar-thumb {
-  background-color: var(--text-primary); /* color of the scroll thumb */
-  border-radius: 4px;
-  border: 2px solid transparent; /* 2px border for thumb, but with a transparent color */
-  background-clip: content-box; /* this will create the effect of space between thumb and track */
-}
-
-.widgets-list-container::-webkit-scrollbar-button {
-  display: none; /* hides the buttons on the scrollbar (up and down arrows) */
-}
-
-/* Firefox */
-.widgets-list-container {
-  scrollbar-width: thin;
-  scrollbar-color: var(--text-primary) var(--card-secondary);
-}
-
 // ACTIONS
 
 .btn-add-container {

@@ -91,3 +91,32 @@ body.dark-theme {
     --item-hover-primary: rgb(42,45,46);
     --item-hover-secondary: rgb(62, 64, 64);
 }
+
+// SCROLLBAR
+
+/* WebKit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-secondary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--text-primary);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-primary) var(--card-secondary);
+}

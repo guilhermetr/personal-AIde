@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { DynamicComponentConfig } from 'src/app/models/dynamic-component-config.model';
 import { SelectWidgetDialogComponent } from 'src/app/widgets/components/select-widget-dialog/select-widget-dialog.component';
 import { Widget } from 'src/app/widgets/models/widget.model';

@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { TextInputComponent } from '../../input/text-input/text-input.component';
 import { CodeEditorComponent } from '../../input/code-editor/code-editor.component';
 

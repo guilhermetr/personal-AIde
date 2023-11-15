@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { WidgetsModule } from './widgets/widgets.module';
 import { GridComponent } from './components/grid/grid.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -23,6 +23,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireAuthGuard, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
 import { environment } from '../environments/environment';
+import { HttpErrorHandlerInterceptor } from './services/api/http-error-handler.interceptor';
 
 const redirectLoggedInToDashboard = () => redirectLoggedInTo(['dashboard']);
 
@@ -73,7 +74,9 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,3 +18,10 @@ export enum CardType {
     Simple,
     Programming,
 }
+
+export enum CategoryId {
+    Writing = 1,
+    Education = 2,
+    Programming = 3
+}
+  

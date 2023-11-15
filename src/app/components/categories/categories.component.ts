@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DynamicComponentConfig } from 'src/app/models/dynamic-component-config.model';
-import { ProgrammingCardComponent } from 'src/app/widgets/components/cards/programming-card/programming-card.component';
-import { SimpleCardComponent } from 'src/app/widgets/components/cards/simple-card/simple-card.component';
-import { Category } from 'src/app/widgets/models/category.model';
-import { Widget } from 'src/app/widgets/models/widget.model';
 import { CategoryService } from 'src/app/widgets/services/category.service';
-import { WidgetService } from 'src/app/widgets/services/widget.service';
 
 @Component({
   selector: 'app-categories',

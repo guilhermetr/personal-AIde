@@ -6,6 +6,7 @@ import { Category } from '../models/category.model';
 import { DynamicComponentConfig } from 'src/app/models/dynamic-component-config.model';
 import { Widget } from '../models/widget.model';
 import { WidgetService } from './widget.service';
+import { CategoryId } from '../utils/enums';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +19,17 @@ export class CategoryService {
     this.defaultCategories = this.createDefaultCategories();
   }
     
+  // Creates the default categories by using the CategoryId enum
   private createDefaultCategories(): Category[] {
-    const categories = [
-      'Writing',
-      'Programming',      
-    ];
-
-    return categories.map((name, index) => new Category(name, false, index + 1));
-  }
+    return Object.keys(CategoryId)
+      .filter(key => isNaN(Number(key))) // Exclude numeric keys to avoid duplicates due to enum's bi-directional mapping
+      .map(key => {
+        // Inserts spaces in multi-word category names, separating PascalCase enum keys
+        const name = key.replace(/([a-z])([A-Z])/g, '$1 $2');
+        const id = CategoryId[key as keyof typeof CategoryId];
+        return new Category(name, false, id);
+      });
+  }  
 
   getDefaultCategories(): Category[] {
     return this.defaultCategories;

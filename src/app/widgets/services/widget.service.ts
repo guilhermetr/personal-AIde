@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Widget } from '../models/widget.model';
-import { CardType } from '../utils/enums';
+import { CardType, CategoryId } from '../utils/enums';
 import { SimpleCardComponent } from '../components/cards/simple-card/simple-card.component';
 import { ProgrammingCardComponent } from '../components/cards/programming-card/programming-card.component';
 import { TaskType } from 'src/app/utils/enums';
@@ -15,20 +15,29 @@ export class WidgetService {
   private defaultWidgets: Widget[] = [
     // TODO: Find a better way of assigning categories here
 
-    // Writing Widgets
-    new Widget('Summarizer', 1, 'Condense content into a brief summary highlighting key points.', CardType.Simple, TaskType.Summarizer),
-    new Widget('Formalizer', 1, 'Convert casual language to a more formal tone suitable for professional contexts.', CardType.Simple, TaskType.Formalizer),    
-    new Widget('Grammar Corrector', 1, 'Identify and correct grammatical errors.', CardType.Simple, TaskType.GrammarCorrector),    
-    new Widget('Paraphraser', 1, 'Rewrite sentences or paragraphs using different words while keeping the original meaning intact.', CardType.Simple, TaskType.Paraphraser),
-    new Widget('Simplifier', 1, 'Simplify complex text to make it accessible to a wider audience or for educational purposes.', CardType.Simple, TaskType.Simplifier),
+    // WRITING
+    new Widget('Summarizer', CategoryId.Writing, 'Condense content into a brief summary highlighting key points.', CardType.Simple, TaskType.Summarizer),
+    new Widget('Formalizer', CategoryId.Writing, 'Convert casual language to a more formal tone suitable for professional contexts.', CardType.Simple, TaskType.Formalizer),    
+    new Widget('Grammar Corrector', CategoryId.Writing, 'Identify and correct grammatical errors.', CardType.Simple, TaskType.GrammarCorrector),    
+    new Widget('Paraphraser', CategoryId.Writing, 'Rewrite sentences or paragraphs using different words while keeping the original meaning intact.', CardType.Simple, TaskType.Paraphraser),
+    new Widget('Simplifier', CategoryId.Writing, 'Simplify complex text to make it accessible to a wider audience or for educational purposes.', CardType.Simple, TaskType.Simplifier),
   
-    // Programming Widgets
-    new Widget('Refactoring Assistant', 2, 'Get code refactoring suggestions for improved efficiency and readability.', CardType.Programming, TaskType.RefactoringAssistant),
-    new Widget('Code Cleaner', 2, 'Format and clean up code for better readability and maintenance.', CardType.Programming, TaskType.CodeCleaner),
-    new Widget('Unit Test Generator', 2, 'Generate unit test cases.', CardType.Programming, TaskType.UnitTestingGenerator),
-    new Widget('Documentation Builder', 2, 'Generate basic documentation, including function/method descriptions, parameter explanations, and return values.', CardType.Programming, TaskType.DocumentationBuilder),
-    new Widget('Complexity Analyzer', 2, 'Evaluate code complexity and get suggestions to simplify it.', CardType.Programming, TaskType.ComplexityAnalyzer),
-    new Widget('Best Practices Validator', 2, 'Review code against industry best practices and get recommendations for aligning with standard coding conventions.', CardType.Programming, TaskType.BestPracticesValidator),
+    // EDUCATION
+    new Widget('Interactive Quiz Maker', CategoryId.Education, 'Generate engaging and educational quizzes from the provided content.', CardType.Simple, TaskType.InteractiveQuizMaker),
+    new Widget('Math Problem Solver', CategoryId.Education, 'Offer solutions and explanations for a range of math problems, enhancing learning and understanding.', CardType.Simple, TaskType.MathProblemSolver),
+    new Widget('Literature Analysis Helper', CategoryId.Education, 'Assist in the analysis of literary works, focusing on themes, characters, and narrative structures.', CardType.Simple, TaskType.LiteratureAnalysisHelper),
+    new Widget('Language Learning Assistant', CategoryId.Education, 'Facilitates language learning with exercises and feedback, covering grammar, vocabulary, and pronunciation.', CardType.Simple, TaskType.LanguageLearningAssistant),
+    new Widget('Historical Event Timeline Creator', CategoryId.Education, 'Create interactive timelines from historical texts to visualize events chronologically.', CardType.Simple, TaskType.HistoricalEventTimelineCreator),
+    new Widget('Science Experiment Idea Generator', CategoryId.Education, 'Provide creative and educational science experiment ideas based on specific topics.', CardType.Simple, TaskType.ScienceExperimentIdeaGenerator),    
+    new Widget('Study Habit Analyzer', CategoryId.Education, 'Evaluate study patterns and provide personalized recommendations for more effective learning.', CardType.Simple, TaskType.StudyHabitAnalyzer),
+
+    // PROGRAMMING
+    new Widget('Refactoring Assistant', CategoryId.Programming, 'Get code refactoring suggestions for improved efficiency and readability.', CardType.Programming, TaskType.RefactoringAssistant),
+    new Widget('Code Cleaner', CategoryId.Programming, 'Format and clean up code for better readability and maintenance.', CardType.Programming, TaskType.CodeCleaner),
+    new Widget('Unit Test Generator', CategoryId.Programming, 'Generate unit test cases.', CardType.Programming, TaskType.UnitTestingGenerator),
+    new Widget('Documentation Builder', CategoryId.Programming, 'Generate basic documentation, including function/method descriptions, parameter explanations, and return values.', CardType.Programming, TaskType.DocumentationBuilder),
+    new Widget('Complexity Analyzer', CategoryId.Programming, 'Evaluate code complexity and get suggestions to simplify it.', CardType.Programming, TaskType.ComplexityAnalyzer),
+    new Widget('Best Practices Validator', CategoryId.Programming, 'Review code against industry best practices and get recommendations for aligning with standard coding conventions.', CardType.Programming, TaskType.BestPracticesValidator),
   ];
 
   // Used for retrieving which card component should be rendered for a given Widget

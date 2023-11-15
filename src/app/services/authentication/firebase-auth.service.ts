@@ -34,4 +34,13 @@ export class FirebaseAuthService {
       this.router.navigate(['/login']);
     });
   }
+
+  async getIdToken(): Promise<string | null> {
+    const user = await this.afAuth.currentUser;
+    if (user) {
+      return user.getIdToken();
+    } else {
+      return null;
+    }
+  }
 }

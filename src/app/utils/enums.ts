@@ -12,7 +12,7 @@ export enum TaskType {
   LiteratureAnalysisHelper,
   LanguageLearningAssistant,
   HistoricalEventTimelineCreator,
-  ScienceExperimentIdeaGenerator,  
+  ScienceExperimentIdeaGenerator,
   StudyHabitAnalyzer,
 
   // PROGRAMMING
@@ -22,4 +22,12 @@ export enum TaskType {
   BestPracticesValidator,
   RefactoringAssistant,
   CodeCleaner,
+
+  // HEALTH
+  NutritionGuideCreator,
+  FitnessPlanGenerator,
+  SleepPatternAnalyzer,
+  HomeRemedyAdvisor,
+  AllergyAlertCompiler,
+  MedicalTerminologyTranslator,  
 }

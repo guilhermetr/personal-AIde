@@ -38,6 +38,14 @@ export class WidgetService {
     new Widget('Documentation Builder', CategoryId.Programming, 'Generate basic documentation, including function/method descriptions, parameter explanations, and return values.', CardType.Programming, TaskType.DocumentationBuilder),
     new Widget('Complexity Analyzer', CategoryId.Programming, 'Evaluate code complexity and get suggestions to simplify it.', CardType.Programming, TaskType.ComplexityAnalyzer),
     new Widget('Best Practices Validator', CategoryId.Programming, 'Review code against industry best practices and get recommendations for aligning with standard coding conventions.', CardType.Programming, TaskType.BestPracticesValidator),
+
+    // Health Widgets
+    new Widget('Nutrition Guide Creator', CategoryId.Health, 'Generate personalized nutrition guides based on individual dietary preferences, restrictions, and health goals.', CardType.Simple, TaskType.NutritionGuideCreator),
+    new Widget('Fitness Plan Generator', CategoryId.Health, 'Create custom fitness plans tailored to individual goals, physical condition, and preferences.', CardType.Simple, TaskType.FitnessPlanGenerator),
+    new Widget('Sleep Pattern Analyzer', CategoryId.Health, 'Analyze sleep habits and patterns to provide actionable recommendations for improving sleep quality.', CardType.Simple, TaskType.SleepPatternAnalyzer),
+    new Widget('Home Remedy Advisor', CategoryId.Health, 'Offer home remedy suggestions for common ailments based on symptoms.', CardType.Simple, TaskType.HomeRemedyAdvisor),
+    new Widget('Allergy Alert Compiler', CategoryId.Health, 'Compile and alert users about potential allergens based on personal health data and environmental factors.', CardType.Simple, TaskType.AllergyAlertCompiler),    
+    new Widget('Medical Terminology Translator', CategoryId.Health, 'Translate complex medical terms into easily understandable language for patient comprehension.', CardType.Simple, TaskType.MedicalTerminologyTranslator),    
   ];
 
   // Used for retrieving which card component should be rendered for a given Widget

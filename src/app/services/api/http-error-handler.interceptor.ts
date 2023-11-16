@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { EMPTY, Observable, throwError } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { ErrorHandlingService } from '../error-handling/error-handling.service';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class HttpErrorHandlerInterceptor implements HttpInterceptor {
             this.errorHandlingService.displayError('No response from server. Check your network connection.');
             break;
           case 400:
-            this.errorHandlingService.displayError('Bad Request. Please check your request and try again.');
+            this.errorHandlingService.displayError('Bad Request. Your request might be too long. Please check if you have exceeded the word limit of 1000 and try again.');
             break;
           case 401:
             this.errorHandlingService.displayError('Unauthorized. Please sign in and try again.');

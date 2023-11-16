@@ -22,6 +22,7 @@ export enum CardType {
 export enum CategoryId {
     Writing = 1,
     Education = 2,
-    Programming = 3
+    Programming = 3,
+    Health = 4,
 }
   

@@ -102,6 +102,26 @@ export class ApiService {
         break;
       case TaskType.BestPracticesValidator:
         prompt = `Validate the following code against industry best practices and suggest improvements: ${inputText}. OUTPUT CODE ONLY.`;
+        break;
+
+        // HEALTH      
+      case TaskType.NutritionGuideCreator:
+        prompt = `Create a personalized nutrition guide based on these dietary preferences and goals: ${inputText}`;
+        break;
+      case TaskType.FitnessPlanGenerator:
+        prompt = `Generate a fitness plan based on these physical conditions and fitness goals: ${inputText}`;
+        break;
+      case TaskType.SleepPatternAnalyzer:
+        prompt = `Analyze these sleep habits and provide recommendations for improvement: ${inputText}`;
+        break;
+      case TaskType.HomeRemedyAdvisor:
+        prompt = `Suggest home remedies for these symptoms: ${inputText}`;
+        break;
+      case TaskType.AllergyAlertCompiler:
+        prompt = `Compile a list of allergens for this individual based on their health data: ${inputText}`;
+        break;      
+      case TaskType.MedicalTerminologyTranslator:
+        prompt = `Translate this medical terminology into plain language: ${inputText}`;
         break;      
       default:
         prompt = inputText;

@@ -129,7 +129,6 @@
 .sidenav-nav-submenu-item:hover {
     background-color: var(--item-hover-secondary);
 
-    .sidenav-link-text,
     .sidenav-link-icon,        
     .sidenav-link-caret {
         color: var(--text-hover);
@@ -139,7 +138,6 @@
 .sidenav-nav-simple-item:hover {
     background-color: var(--item-hover-primary) !important;    
 
-    .sidenav-link-text,
     .sidenav-link-icon {
         color: var(--text-hover);
     }

@@ -23,6 +23,11 @@ export const navbarData = [ // TODO: Use the categories service to define this
             routerLink: 'categories/programming',
             icon: 'fa-solid fa-computer',
             label: 'Programming',
+        },
+        {
+            routerLink: 'categories/health',
+            icon: 'fa-solid fa-apple-whole',
+            label: 'Health',
         },        
         ]
     },

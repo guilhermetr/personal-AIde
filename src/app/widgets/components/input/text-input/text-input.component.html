@@ -1,8 +1,9 @@
 <div class="input-container">
     <textarea 
         #textInputArea 
+        [readOnly]="readonly"
         [(ngModel)]="value" 
-        [placeholder]="placeholder" 
+        [placeholder]="readonly ? '' : placeholder" 
         rows="1" 
         (input)="adjustHeight()"
         [style.max-height]="maxHeight"></textarea>

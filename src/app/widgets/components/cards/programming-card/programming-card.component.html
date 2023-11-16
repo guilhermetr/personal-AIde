@@ -23,12 +23,12 @@
         </div>        
         <widgets-loading-overlay [isLoading]="isLoading"></widgets-loading-overlay>
         <div class="text-input-area">
-            <widgets-text-input 
-                [(ngModel)]="textInput" 
-                placeholder="Add context here..."                
+            <widgets-text-input
+                [readonly]="true"
+                [(ngModel)]="textInput"                              
                 [parentHeight]="cardBodyHeight"
                 (heightChanged)="handleInputHeightChanged($event)"
-                (inputSubmitted)="handleInputSubmit($event)">
+                (inputSubmitted)="handleInputSubmit()">
             </widgets-text-input>
         </div>
     </div>

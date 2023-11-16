@@ -27,6 +27,7 @@ export class TextInputComponent implements OnInit, AfterViewInit, ControlValueAc
 
   @Input() placeholder: string = "Enter text here...";
   @Input() parentHeight!: number;
+  @Input() readonly: boolean = false;
   maxHeight!: string;
 
   onChange: any = () => {};

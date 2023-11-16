@@ -86,7 +86,7 @@ export class ApiService {
 
       // PROGRAMMING
       case TaskType.RefactoringAssistant:
-        prompt = `Suggest refactoring for improved efficiency and readability for the following code: ${inputText}. OUTPUT CODE ONLY.`;
+        prompt = `Suggest refactoring for improved efficiency and readability for the following code: ${inputText}. OUTPUT THE EXPLANATIONS AS COMMENTS.`;
         break;
       case TaskType.CodeCleaner:
         prompt = `Format and clean up the following source code for better readability and maintenance: ${inputText}. OUTPUT CODE ONLY.`;

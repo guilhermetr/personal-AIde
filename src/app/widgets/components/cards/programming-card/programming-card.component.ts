@@ -3,6 +3,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { TextInputComponent } from '../../input/text-input/text-input.component';
 import { CodeEditorComponent } from '../../input/code-editor/code-editor.component';
+import { ApiService } from 'src/app/services/api/api.service';
+import { TaskType } from 'src/app/utils/enums';
 
 @Component({
   selector: 'widgets-programming-card',
@@ -14,7 +16,8 @@ export class ProgrammingCardComponent implements OnInit {
   dialogRef!: MatDialogRef<ProgrammingCardComponent>
   isDialog!: boolean;
   
-  @Input() title: string = "";  
+  @Input() title: string = "";
+  @Input() taskType!: TaskType;
   cardBodyHeight: number = 300;
   expandedCardBodyHeight: string = '88vh'
   codeEditorHeight!: number;
@@ -35,6 +38,7 @@ export class ProgrammingCardComponent implements OnInit {
   constructor(
     public dialog: MatDialog, 
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
@@ -108,15 +112,11 @@ export class ProgrammingCardComponent implements OnInit {
     this.outputCodeEditorComponent.updateView = !this.inputCodeEditorComponent.updateView;
   }
 
-  handleInputSubmit(event: any): void {
+  async handleInputSubmit(): Promise<void> {
     this.isLoading = true;
-
-    // Simulate API call delay using setTimeout
-    setTimeout(() => {
-        // Handle the logic of sending the input to the API here
-
-        this.isLoading = false;  // Set loading to false after getting the API response
-    }, 2000);  // Simulating a delay of 2 seconds for the API response
+    this.codeOutput = await this.apiService.generateText(`${this.codeInput} ${this.textInput}`, this.taskType);
+    this.textInput = "";    
+    this.isLoading = false;
   }
 
   copyOutput(): void {
